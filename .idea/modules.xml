@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RomeBattleGroup.iml" filepath="$PROJECT_DIR$/RomeBattleGroup.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/romebattlegroup.iml" filepath="$PROJECT_DIR$/romebattlegroup.iml" />
     </modules>
   </component>
 </project>
