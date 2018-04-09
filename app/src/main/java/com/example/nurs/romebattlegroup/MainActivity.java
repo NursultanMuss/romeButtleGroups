@@ -1,5 +1,6 @@
 package com.example.nurs.romebattlegroup;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,32 +11,48 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Adapter;
 
 import com.example.nurs.romebattlegroup.data.FractionsDbHelper;
+import com.example.nurs.romebattlegroup.data.MainFractionContract;
 
 public class MainActivity extends AppCompatActivity implements MainAdapter.MainAdapterOnClickHandler {
-    private RecyclerView mRecyclerView;
+     RecyclerView mRecyclerView;
     private MainAdapter mMainAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private SQLiteDatabase mDb;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView = (RecyclerView) this.findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new GridLayoutManager(this, 2);
+        mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+        FractionsDbHelper dbHelper = new FractionsDbHelper(this);
+        mDb = dbHelper.getReadableDatabase();
+        Cursor cursor = readFromDb();
 
-        mMainAdapter = new MainAdapter(this);
+        mMainAdapter = new MainAdapter(this, cursor);
         mRecyclerView.setAdapter(mMainAdapter);
 
-        FractionsDbHelper dbHelper = new FractionsDbHelper(this);
 
-        mDb = dbHelper.getWritableDatabase();
     }
 
     @Override
     public void onClickListener(String str) {
 
     }
+    private Cursor readFromDb(){
+        return mDb.query(
+                MainFractionContract.FractionsEntry.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
 }

@@ -13,8 +13,8 @@ public final class MainFractionContract {
         public static final String COLUMN_IMG_RES = "img_res";
         public static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE " + MainFractionContract.FractionsEntry.TABLE_NAME + " ("
-                        + MainFractionContract.FractionsEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                        + MainFractionContract.FractionsEntry.COLUMN_FRACTION_NAME + " TEXT,"
+                        + MainFractionContract.FractionsEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + MainFractionContract.FractionsEntry.COLUMN_FRACTION_NAME + " TEXT, "
                         + MainFractionContract.FractionsEntry.COLUMN_IMG_RES + " TEXT)";
 
 
