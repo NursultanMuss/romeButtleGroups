@@ -1,6 +1,7 @@
 package com.example.nurs.romebattlegroup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nurs.romebattlegroup.data.MainFractionContract;
 
@@ -21,22 +23,24 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
 
     private Cursor mCursor;
     private Context mContext;
-
+    final private MainAdapterOnClickHandler mClickHandler;
 
     public interface MainAdapterOnClickHandler {
         void onClickListener(String str);
     }
 
-    public MainAdapter (Context context, Cursor cursor){
-
-        this.mContext = context;
-        this.mCursor = cursor;
+    public MainAdapter (MainAdapterOnClickHandler handler ,Context context, Cursor cursor){
+        mClickHandler = handler;
+        mContext = context;
+        mCursor = cursor;
 
     }
 
     public class MainAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView mFractionTextView;
+
         ImageView mImageView;
+
 
         public MainAdapterViewHolder(View view){
             super(view);
@@ -48,6 +52,22 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
         @Override
         public void onClick(View view) {
             int adapterPosition = getAdapterPosition();
+            Intent intent;
+            String fractionsName = mFractionTextView.getText().toString();
+            switch (adapterPosition){
+                case  0:
+                    intent = new Intent(view.getContext(),BattleGroups.class);
+                    intent.putExtra(Intent.EXTRA_TEXT,fractionsName);
+                    view.getContext().startActivity(intent);
+                    break;
+                case 1:
+                    intent = new Intent(view.getContext(),BattleGroups.class);
+                    intent.putExtra(Intent.EXTRA_TEXT,fractionsName);
+                    view.getContext().startActivity(intent);
+                    break;
+            }
+
+            Toast.makeText(mContext, String.valueOf(adapterPosition), Toast.LENGTH_SHORT).show();
 
         }
     }
@@ -70,7 +90,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
 
         String thisFractionText = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.FractionsEntry.COLUMN_FRACTION_NAME));
         String imageViewText = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.FractionsEntry.COLUMN_IMG_RES));
-        int imgId = Integer.parseInt("R.id."+imageViewText+".png");
+//        String img = String.valueOf(imgId);
+        int imgId = mainAdapterViewHolder.mImageView.getResources().getIdentifier(imageViewText,"drawable","com.example.nurs.romebattlegroup");
+
+        String img = String.valueOf(imgId);
         mainAdapterViewHolder.mFractionTextView.setText(thisFractionText);
         mainAdapterViewHolder.mImageView.setImageResource(imgId);
 

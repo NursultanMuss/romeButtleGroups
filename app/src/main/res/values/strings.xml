@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">RomeBattleGroup</string>
     <string name="fraction_rome">Rome</string>
+    <string name="web_link">Web ссылка</string>
+    <string name="action_search"></string>
+    <string name="action_presentation"></string>
+    <string name="action_sort">По популярности</string>
+    <string name="filter">Фильтры</string>
+    <string name="logo_description">Rome 2 Total War</string>
+    <string name="battle_groups">Отряды</string>
+    <string-array name="populus">
+        <item>по популярности</item>
+        <item>по возрастанию цены</item>
+        <item>по убыванию цены</item>
+    </string-array>
+
 </resources>
