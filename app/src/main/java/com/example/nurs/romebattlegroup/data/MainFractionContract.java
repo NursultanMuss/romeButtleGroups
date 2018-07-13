@@ -21,4 +21,19 @@ public final class MainFractionContract {
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXISTS " + FractionsEntry.TABLE_NAME;
     }
+    public static class InfantyEntry implements BaseColumns{
+        public static final String TABLE_NAME = "infanty";
+        public static final String COLUMN_BATTLE_GROUP_NAME = "battle_group_name";
+        public static final String COLUMN_BLIZ_BOI = "bliz_boi";
+        public static final String COLUMN_URON_ORUZHIEM = "uron_oruzhiem";
+        public static final String COLUMN_NATISK = "natisk";
+        public static final String COLUMN_ZASHITA_BLIZ_BOI = "zashita_bliz_boi";
+        public static final String COLUMN_BRONIA = "bronia";
+        public static final String COLUMN_HP = "HP";
+        public static final String COLUMN_MORAL = "Moral";
+        public static final String COLUMN_FRACTION = "Fraction";
+        public static final String COLUMN_KOLVO = "kolvo";
+        public static final String COLUMN_TSENA_NAIMA = "tsena_naima";
+        public static final String COLUMN_TSENA_SODERZHANIYA = "tsena_soderzhaniya";
+    }
 }
