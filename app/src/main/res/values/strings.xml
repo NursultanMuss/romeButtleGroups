@@ -13,5 +13,6 @@
         <item>по возрастанию цены</item>
         <item>по убыванию цены</item>
     </string-array>
+    <string name="rom_armour_legionaries">Доспешные легионеры</string>
 
 </resources>

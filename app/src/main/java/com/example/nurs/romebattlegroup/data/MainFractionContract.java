@@ -24,6 +24,7 @@ public final class MainFractionContract {
     public static class InfantyEntry implements BaseColumns{
         public static final String TABLE_NAME = "infanty";
         public static final String COLUMN_BATTLE_GROUP_NAME = "battle_group_name";
+        public static final String COLUMN_IMG = "img";
         public static final String COLUMN_BLIZ_BOI = "bliz_boi";
         public static final String COLUMN_URON_ORUZHIEM = "uron_oruzhiem";
         public static final String COLUMN_NATISK = "natisk";
