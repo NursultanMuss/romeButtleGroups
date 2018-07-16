@@ -1,9 +1,13 @@
 package com.example.nurs.romebattlegroup;
 
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.View;
@@ -16,23 +20,28 @@ import android.widget.Toast;
 
 import com.example.nurs.romebattlegroup.data.DataAccess;
 import com.example.nurs.romebattlegroup.data.FractionsDbHelper;
+import com.example.nurs.romebattlegroup.data.MainFractionContract;
 
-public class BattleGroups extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class BattleGroups extends AppCompatActivity implements AdapterView.OnItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor>,
+        BattleGroupsAdapter.BattleGroupsAdapterOnClickHandler
+{
 
 
     RecyclerView mRecyclerView;
     private BattleGroupsAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private Cursor fractions;
+    private Cursor c_battleGroups;
     private DataAccess dbAccess;
-    private TextView mtv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_groups);
         mRecyclerView = this.findViewById(R.id.rv_battle_group);
-        mRecyclerView.setHasa
-        mtv = (TextView) findViewById(R.id.battle_group);
+        mRecyclerView.setHasFixedSize(false);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        getSupportLoaderManager().initLoader(0,null,this);
         Intent startedIntent = this.getIntent();
 
         //ToolBar
@@ -43,8 +52,10 @@ public class BattleGroups extends AppCompatActivity implements AdapterView.OnIte
 
 
         if (startedIntent.hasExtra(Intent.EXTRA_TEXT)){
-            mtv.setText(startedIntent.getStringExtra(Intent.EXTRA_TEXT));
+            String frac_intent = startedIntent.getStringExtra(Intent.EXTRA_TEXT);
         }
+        String frac= frac_intent;
+
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.populus,android.R.layout.simple_spinner_item);
@@ -71,4 +82,40 @@ public class BattleGroups extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+//    @Override
+//    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+//
+//    }
+
+    @Override
+    public android.support.v4.content.Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(this){
+            @Override
+            public Cursor loadInBackground() {
+                dbAccess = DataAccess.getInstance(BattleGroups.this);
+                c_battleGroups = dbAccess.getInfanti();
+                BattleGroups.this.
+                dbAccess.close();
+                return c_battleGroups;
+            }
+        };
+    }
+
+    @Override
+    public void onLoadFinished(android.support.v4.content.Loader<Cursor> loader, Cursor data) {
+        data.moveToFirst();
+        mAdapter = new BattleGroupsAdapter(this,this,data);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
+
+    }
+
+
+    @Override
+    public void onClickListener(String str) {
+
+    }
 }

@@ -64,12 +64,12 @@ public class DataAccess {
     public Cursor getInfanti(){
         open();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        String[] sqlSelect = { "_id", "battle_group_name", "bliz_boi", "uron_oruzhiem", "natisk",
+        String[] sqlSelect = { "_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
                 "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
                 "kolvo", "tsena_naima", "tsena_soderzhaniya"};
-        String sqlTable = "infanty";
+        String sqlTables = "infanty";
 
-        qb.setTables(sqlTable);
+        qb.setTables(sqlTables);
 
         Cursor c = qb.query(this.database, sqlSelect, null, null,
                 null, null,null);

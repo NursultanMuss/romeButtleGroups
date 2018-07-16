@@ -1,6 +1,7 @@
 package com.example.nurs.romebattlegroup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +14,6 @@ import com.example.nurs.romebattlegroup.data.MainFractionContract;
 
 import org.w3c.dom.Text;
 
-import me.grantland.widget.AutofitHelper;
 
 public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapter.BattleGroupsAdapterViewHolder> {
     private Cursor mCursor;
