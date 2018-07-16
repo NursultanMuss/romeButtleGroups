@@ -1,8 +1,10 @@
 package com.example.nurs.romebattlegroup;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,13 +14,24 @@ import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
+import com.example.nurs.romebattlegroup.data.DataAccess;
+import com.example.nurs.romebattlegroup.data.FractionsDbHelper;
+
 public class BattleGroups extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+
+    RecyclerView mRecyclerView;
+    private BattleGroupsAdapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private Cursor fractions;
+    private DataAccess dbAccess;
     private TextView mtv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_groups);
+        mRecyclerView = this.findViewById(R.id.rv_battle_group);
+        mRecyclerView.setHasa
         mtv = (TextView) findViewById(R.id.battle_group);
         Intent startedIntent = this.getIntent();
 
