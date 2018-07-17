@@ -32,6 +32,7 @@ public class BattleGroups extends AppCompatActivity implements AdapterView.OnIte
     private RecyclerView.LayoutManager mLayoutManager;
     private Cursor c_battleGroups;
     private DataAccess dbAccess;
+    String frac;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +53,10 @@ public class BattleGroups extends AppCompatActivity implements AdapterView.OnIte
 
 
         if (startedIntent.hasExtra(Intent.EXTRA_TEXT)){
-            String frac_intent = startedIntent.getStringExtra(Intent.EXTRA_TEXT);
+            frac= startedIntent.getStringExtra(Intent.EXTRA_TEXT);
         }
-        String frac= frac_intent;
+
+
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -93,8 +95,7 @@ public class BattleGroups extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public Cursor loadInBackground() {
                 dbAccess = DataAccess.getInstance(BattleGroups.this);
-                c_battleGroups = dbAccess.getInfanti();
-                BattleGroups.this.
+                c_battleGroups = dbAccess.getInfanti(BattleGroups.this.frac);
                 dbAccess.close();
                 return c_battleGroups;
             }

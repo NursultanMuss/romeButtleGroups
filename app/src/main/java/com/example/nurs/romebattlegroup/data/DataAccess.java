@@ -61,17 +61,19 @@ public class DataAccess {
         return c;
     }
 
-    public Cursor getInfanti(){
+    public Cursor getInfanti(String fraction){
         open();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         String[] sqlSelect = { "_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
                 "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
                 "kolvo", "tsena_naima", "tsena_soderzhaniya"};
         String sqlTables = "infanty";
+        String selection = "Fraction = ?";
+        String[] selectionArgs = new String[]{fraction};
 
         qb.setTables(sqlTables);
 
-        Cursor c = qb.query(this.database, sqlSelect, null, null,
+        Cursor c = qb.query(this.database, sqlSelect, selection, selectionArgs,
                 null, null,null);
 
         c.moveToFirst();
