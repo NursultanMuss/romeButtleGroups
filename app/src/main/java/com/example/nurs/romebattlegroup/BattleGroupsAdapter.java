@@ -60,8 +60,6 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
             tv_kolvo_1= view.findViewById(R.id.kolvo_4);
             tv_tsena_1 = view.findViewById(R.id.tsena_1);
             tv_tsena_soderzhaniya_1 = view.findViewById(R.id.tsena_soderzhaniya_1);
-//            AutofitHelper.create(tv_bliz_boi);
-//            AutofitHelper.create(tv_uronoruzhiem);
             view.setOnClickListener(this);
         }
 

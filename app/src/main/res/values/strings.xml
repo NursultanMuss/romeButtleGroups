@@ -9,7 +9,7 @@
     <string name="logo_description">Rome 2 Total War</string>
     <string name="battle_groups">Отряды</string>
     <string-array name="populus">
-        <item>по популярности</item>
+        <item>по крутости</item>
         <item>по возрастанию цены</item>
         <item>по убыванию цены</item>
     </string-array>
