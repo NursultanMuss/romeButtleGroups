@@ -25,7 +25,7 @@ import com.example.nurs.romebattlegroup.data.DataAccess;
 import com.example.nurs.romebattlegroup.data.FractionsDbHelper;
 import com.example.nurs.romebattlegroup.data.MainFractionContract;
 
-public class BattleGroups extends AppCompatActivity implements AdapterView.OnItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor>,
+public class BattleGroups extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,
         BattleGroupsAdapter.BattleGroupsAdapterOnClickHandler
 {
 
@@ -70,26 +70,30 @@ public class BattleGroups extends AppCompatActivity implements AdapterView.OnIte
                 R.array.populus,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
+                String txt="1";
+                switch(pos){
+                    case 0 :
+                        break;
+                    case 1 : txt="vozrastaniu";
+                        break;
+                    case 2 : txt="ubyvaniu";
+                        break;
+                }
+                Toast.makeText(BattleGroups.this, txt, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        String txt="1";
-        switch(pos){
-            case 0 :
-            break;
-            case 1 : txt="vozrastaniu";
-            break;
-            case 2 : txt="ubyvaniu";
-            break;
-        }
-        Toast.makeText(this, txt, Toast.LENGTH_SHORT).show();
-    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
 
 //    @Override
 //    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
