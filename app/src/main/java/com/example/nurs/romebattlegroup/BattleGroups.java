@@ -116,7 +116,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
             public Cursor loadInBackground() {
                 dbAccess = DataAccess.getInstance(BattleGroups.this);
                 if(args.getInt("selected_item_id") == 1){
-
+                    v_battler grop
                 }
                 c_battleGroups = dbAccess.getInfanti(BattleGroups.this.frac);
                 dbAccess.close();

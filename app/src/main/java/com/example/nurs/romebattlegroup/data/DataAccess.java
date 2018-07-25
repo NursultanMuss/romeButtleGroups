@@ -86,6 +86,12 @@ public class DataAccess {
                 "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
                 "kolvo", "tsena_naima", "tsena_soderzhaniya"};
         String sqlTables = "infanty";
+        String orderBy= "tsena_naima";
 
+        qb.setTables(sqlTables);
+
+        Cursor c = qb.query(this.database, sqlSelect, null,null,null,null,orderBy);
+        c.moveToFirst();
+        return c;
     }
 }

@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +29,6 @@
         android:id="@+id/gridLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:columnCount="3"
         android:orientation="horizontal"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:text="Урон оружием"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/natisk"
@@ -58,31 +58,31 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:text="Натиск"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/bliz_boi_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:textSize="16sp"
-            android:text="58" />
+            android:text="58"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/uronoruzhiem_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:textSize="16sp"
-            android:text="35" />
+            android:text="35"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/natisk_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:textSize="16sp"
-            android:text="15" />
+            android:text="15"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/zhashita"
@@ -90,65 +90,65 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:maxWidth="70dp"
-            android:textSize="13sp"
-            android:text="Защита в ближ. бою" />
+            android:text="Защита в ближ. бою"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/bronia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:textSize="13sp"
-            android:text="Броня" />
+            android:text="Броня"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/HP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13sp"
             android:layout_marginLeft="4dp"
             android:maxWidth="65dp"
-            android:text="Очки Здоровья" />
+            android:text="Очки Здоровья"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/zhashita_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:textSize="16sp"
-            android:text="51" />
+            android:text="51"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/bronia_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:textSize="16sp"
-            android:text="95" />
+            android:text="95"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/HP_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:textSize="16sp"
-            android:text="60" />
+            android:text="60"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/Moral"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:textSize="13sp"
-            android:text="Боевой дух" />
+            android:text="Боевой дух"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/kolvo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:textSize="13sp"
-            android:text="Количество" />
+            android:text="Количество"
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/Moral_3"
@@ -156,16 +156,16 @@
             android:layout_height="wrap_content"
             android:layout_column="0"
             android:layout_marginLeft="4dp"
-            android:textSize="16sp"
-            android:text="65" />
+            android:text="65"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/kolvo_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
-            android:textSize="16sp"
-            android:text="160" />
+            android:text="160"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tsena"
@@ -181,16 +181,16 @@
             android:id="@+id/tsena_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="930" />
+            android:text="930"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tsena_soderzhaniya"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
             android:layout_column="0"
             android:layout_columnSpan="2"
+            android:layout_marginLeft="4dp"
             android:text="Цена содержания" />
 
         <TextView
@@ -209,15 +209,11 @@
         app:layout_constraintGuide_begin="0dp"
         app:layout_constraintGuide_percent="0.07" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="256dp"
-        android:layout_height="11dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:text=""
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
