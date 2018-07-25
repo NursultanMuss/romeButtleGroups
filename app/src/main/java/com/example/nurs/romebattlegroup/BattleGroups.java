@@ -70,20 +70,25 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
                 R.array.populus,android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int pos, long l) {
-                String txt="1";
+                int item = 5;
                 switch(pos){
                     case 0 :
+                        item= 0;
                         break;
-                    case 1 : txt="vozrastaniu";
+                    case 1 : item=1;
                         break;
-                    case 2 : txt="ubyvaniu";
+                    case 2 : item=2;
                         break;
                 }
-                Toast.makeText(BattleGroups.this, txt, Toast.LENGTH_SHORT).show();
+                Bundle args = new Bundle();
+                args.putInt("selected_item_id", item);
+                getSupportLoaderManager().initLoader(0,args,BattleGroups.this);
+
             }
 
             @Override
@@ -91,8 +96,12 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
 
             }
         });
-    }
+//        int selectedItemf = spinner.getSelectedItemPosition();
 
+    }
+//    public void poKrutosti(){
+//        getSupportLoaderManager().
+//    }
 
 
 //    @Override
@@ -101,11 +110,14 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
 //    }
 
     @Override
-    public android.support.v4.content.Loader<Cursor> onCreateLoader(int id, Bundle args) {
+    public android.support.v4.content.Loader<Cursor> onCreateLoader(int id, final Bundle args) {
         return new CursorLoader(this){
             @Override
             public Cursor loadInBackground() {
                 dbAccess = DataAccess.getInstance(BattleGroups.this);
+                if(args.getInt("selected_item_id") == 1){
+
+                }
                 c_battleGroups = dbAccess.getInfanti(BattleGroups.this.frac);
                 dbAccess.close();
                 return c_battleGroups;

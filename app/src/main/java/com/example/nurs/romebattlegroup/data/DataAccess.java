@@ -79,4 +79,13 @@ public class DataAccess {
         c.moveToFirst();
         return c;
     }
+    public Cursor getVozrastaniu(){
+        open();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        String []  sqlSelect = { "_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
+                "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
+                "kolvo", "tsena_naima", "tsena_soderzhaniya"};
+        String sqlTables = "infanty";
+
+    }
 }
