@@ -1,6 +1,7 @@
 package com.example.nurs.romebattlegroup;
 
 import android.content.res.Configuration;
+import android.os.BaseBundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.content.Intent;
@@ -85,15 +86,23 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
                     case 2 : item=2;
                         break;
                 }
+                String itemStr = item + "";
+//                Toast.makeText(BattleGroups.this, itemStr, Toast.LENGTH_SHORT).show();
                 Bundle args = new Bundle();
                 args.putInt("selected_item_id", item);
-                getSupportLoaderManager().initLoader(0,args,BattleGroups.this);
+                getSupportLoaderManager().restartLoader(0,args,BattleGroups.this);
+//                if(item == 0){
+//                    getSupportLoaderManager().initLoader(0,args,BattleGroups.this);
+//                }else{
+//
+//                }
+
 
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
+                Toast.makeText(BattleGroups.this,"yoyo",Toast.LENGTH_SHORT).show();
             }
         });
 //        int selectedItemf = spinner.getSelectedItemPosition();
@@ -115,10 +124,15 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
             @Override
             public Cursor loadInBackground() {
                 dbAccess = DataAccess.getInstance(BattleGroups.this);
-                if(args.getInt("selected_item_id") == 1){
-                    v_battler grop
+                if(args == null){
+                    c_battleGroups = dbAccess.getInfanti(BattleGroups.this.frac);
+                }else if(args.getInt("selected_item_id")==1) {
+                    c_battleGroups = dbAccess.getVozrastaniu(BattleGroups.this.frac);
+                }else if (args.getInt("selected_item_id") == 0){
+                    c_battleGroups = dbAccess.getKrutosti(BattleGroups.this.frac);
+                }else if(args.getInt("selected_item_id") == 2){
+                    c_battleGroups = dbAccess.getUbivaniu(BattleGroups.this.frac);
                 }
-                c_battleGroups = dbAccess.getInfanti(BattleGroups.this.frac);
                 dbAccess.close();
                 return c_battleGroups;
             }
@@ -134,7 +148,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
-
+        mAdapter.swapCursor(c_battleGroups);
     }
 
 

@@ -67,8 +67,6 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
                     break;
             }
 
-            Toast.makeText(mContext, String.valueOf(adapterPosition), Toast.LENGTH_SHORT).show();
-
         }
     }
 

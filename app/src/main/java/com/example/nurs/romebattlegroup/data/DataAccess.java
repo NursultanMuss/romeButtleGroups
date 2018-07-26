@@ -79,7 +79,7 @@ public class DataAccess {
         c.moveToFirst();
         return c;
     }
-    public Cursor getVozrastaniu(){
+    public Cursor getVozrastaniu(String fraction){
         open();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         String []  sqlSelect = { "_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
@@ -87,11 +87,49 @@ public class DataAccess {
                 "kolvo", "tsena_naima", "tsena_soderzhaniya"};
         String sqlTables = "infanty";
         String orderBy= "tsena_naima";
+        String selection = "Fraction = ?";
+        String[] selectionArgs = new String[]{fraction};
 
         qb.setTables(sqlTables);
 
-        Cursor c = qb.query(this.database, sqlSelect, null,null,null,null,orderBy);
+        Cursor c = qb.query(this.database, sqlSelect, selection,selectionArgs,null,null,orderBy);
         c.moveToFirst();
         return c;
     }
+
+    public Cursor getKrutosti(String fraction){
+        open();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        String []  sqlSelect = { "_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
+                "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
+                "kolvo", "tsena_naima", "tsena_soderzhaniya"};
+        String sqlTables = "infanty";
+        String orderBy= "bliz_boi DESC";
+        String selection = "Fraction = ?";
+        String[] selectionArgs = new String[]{fraction};
+
+        qb.setTables(sqlTables);
+
+        Cursor c = qb.query(this.database, sqlSelect, selection,selectionArgs,null,null,orderBy);
+        c.moveToFirst();
+        return c;
+    }
+    public Cursor getUbivaniu(String fraction){
+        open();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        String []  sqlSelect = { "_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
+                "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
+                "kolvo", "tsena_naima", "tsena_soderzhaniya"};
+        String sqlTables = "infanty";
+        String orderBy= "tsena_naima DESC";
+        String selection = "Fraction = ?";
+        String[] selectionArgs = new String[]{fraction};
+
+        qb.setTables(sqlTables);
+
+        Cursor c = qb.query(this.database, sqlSelect, selection,selectionArgs,null,null,orderBy);
+        c.moveToFirst();
+        return c;
+    }
+
 }

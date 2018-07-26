@@ -2,11 +2,14 @@ package com.example.nurs.romebattlegroup;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.ContentObserver;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,11 +17,50 @@ import com.example.nurs.romebattlegroup.data.MainFractionContract;
 
 import org.w3c.dom.Text;
 
+import java.util.Observer;
+
 
 public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapter.BattleGroupsAdapterViewHolder> {
     private Cursor mCursor;
+    private ContentObserver mChangeObserver;
+    private DataSetObserver mDataSetObserver;
+    private int mRowIDColumn;
+    private boolean mDataValid;
     private Context mContext;
     final private BattleGroupsAdapterOnClickHandler mClickHandler;
+
+    public void changeCursor(Cursor cursor) {
+        Cursor old = swapCursor(cursor);
+        if (old != null) {
+            old.close();
+        }
+    }
+
+    public Cursor swapCursor (Cursor newCursor){
+        if (newCursor == mCursor) {
+            return null;
+        }
+        Cursor oldCursor = mCursor;
+        if (oldCursor != null) {
+            if (mChangeObserver != null) oldCursor.unregisterContentObserver(mChangeObserver);
+            if (mDataSetObserver != null) oldCursor.unregisterDataSetObserver(mDataSetObserver);
+        }
+        mCursor = newCursor;
+        if (newCursor != null) {
+            if (mChangeObserver != null) newCursor.registerContentObserver(mChangeObserver);
+            if (mDataSetObserver != null) newCursor.registerDataSetObserver(mDataSetObserver);
+            mRowIDColumn = newCursor.getColumnIndexOrThrow("_id");
+            mDataValid = true;
+            // notify the observers about the new cursor
+            notifyDataSetChanged();
+        } else {
+            mRowIDColumn = -1;
+            mDataValid = false;
+            // notify the observers about the lack of a data set
+//            notifyDataSetInvalidated();
+        }
+        return oldCursor;
+    }
 
     public interface BattleGroupsAdapterOnClickHandler{
         void onClickListener (String str);
