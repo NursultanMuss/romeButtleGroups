@@ -36,5 +36,6 @@ public final class MainFractionContract {
         public static final String COLUMN_KOLVO = "kolvo";
         public static final String COLUMN_TSENA_NAIMA = "tsena_naima";
         public static final String COLUMN_TSENA_SODERZHANIYA = "tsena_soderzhaniya";
+        public static final String COLUMN_TYPE = "type_of_group";
     }
 }

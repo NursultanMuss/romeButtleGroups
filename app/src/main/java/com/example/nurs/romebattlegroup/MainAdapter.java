@@ -56,12 +56,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
             String fractionsName = mFractionTextView.getText().toString();
             switch (adapterPosition){
                 case  0:
-                    intent = new Intent(view.getContext(),BattleGroups.class);
+                    intent = new Intent(view.getContext(),BattleGroupTypes.class);
                     intent.putExtra(Intent.EXTRA_TEXT,fractionsName);
                     view.getContext().startActivity(intent);
                     break;
                 case 1:
-                    intent = new Intent(view.getContext(),BattleGroups.class);
+                    intent = new Intent(view.getContext(),BattleGroupTypes.class);
                     intent.putExtra(Intent.EXTRA_TEXT,fractionsName);
                     view.getContext().startActivity(intent);
                     break;

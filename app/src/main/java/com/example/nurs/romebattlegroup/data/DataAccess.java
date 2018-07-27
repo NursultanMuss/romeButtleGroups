@@ -131,5 +131,10 @@ public class DataAccess {
         c.moveToFirst();
         return c;
     }
+    public Cursor getGroupsType(String fraction){
+        open();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+
+    }
 
 }
