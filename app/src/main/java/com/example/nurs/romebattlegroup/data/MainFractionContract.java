@@ -38,4 +38,24 @@ public final class MainFractionContract {
         public static final String COLUMN_TSENA_SODERZHANIYA = "tsena_soderzhaniya";
         public static final String COLUMN_TYPE = "type_of_group";
     }
+    public static class FracOtryadEntry implements BaseColumns{
+        public static final String TABLE_NAME = "fraction_otryad";
+        public static final String COLUMN_FRAC_NAME = "frac_name";
+        public static final String COLUMN_OTRYADI = "otryadi";
+//        public static final String COLUMN_KOMANDOVANIE = "komandovanie";
+//        public static final String COLUMN_PEHOTA_BLIZ_BOI = "pehota_bliz_boi";
+//        public static final String COLUMN_STRELKI_PEHOTINCI = "strelki_pehotinci";
+//        public static final String COLUMN_PEHOTA_S_KOPIYAMI = "pehota_s_kopiyami";
+//        public static final String COLUMN_CAV_BLIZ_BOI = "cav_bliz_boi";
+//        public static final String COLUMN_CAV_STRELKI = "cav_strelki";
+//        public static final String COLUMN_CAV_UDAR = "cav_udar";
+//        public static final String COLUMN_SLON = "slon";
+//        public static final String COLUMN_STAC_DALNO_MACHINE = "stac_dalno_machine";
+//        public static final String COLUMN_DALNO_MACHINE = "dalno_machine";
+//        public static final String COLUMN_OSOB_BOI_EDENIC = "osob_boi_edenic";
+//        public static final String COLUMN_PHLOTOVOD = "phlotovod";
+//        public static final String COLUMN_SHIP_BLIZ_BOI = "ship_bliz_boi";
+//        public static final String COLUMN_SHIP_STRELKI = "ship_strelk";
+//        public static final String COLUMN_SHIP_DALNO_MACHINE = "ship_dalno_machine";
+    }
 }

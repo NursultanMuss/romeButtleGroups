@@ -14,7 +14,6 @@ public class BattleTypesAdapter extends CursorAdapter {
     private Cursor mCursor;
     private Context mContext;
     TextView tv_group_type;
-    TextView tv_group_number;
 
 
     public BattleTypesAdapter(Context context, Cursor c, int flags) {
@@ -33,10 +32,24 @@ public class BattleTypesAdapter extends CursorAdapter {
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         tv_group_type = (TextView) view.findViewById(R.id.tv_group_type);
-        tv_group_number = (TextView) view.findViewById(R.id.tv_group_number);
 
-        String type= cursor.getString(cursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TYPE));
-        String number = cursor.getString(cursor.getColumnIndex(MainFractionContract.InfantyEntry.))
+//        String type= cursor.getString(cursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TYPE));
+//        cursor.moveToNext();
+//        String type_con = cursor.getString(cursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TYPE));
+//        if(type == type_con){
+//        }
+        String type= cursor.getString(cursor.getColumnIndex(MainFractionContract.FracOtryadEntry.COLUMN_OTRYADI));
+//        int kol_vo_types=1;
+//        do {
+//
+//            cursor.moveToNext();
+//            String type_con = cursor.getString(cursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TYPE));
+//            if(type == type_con) return;
+//            else kol_vo_types++;
+//        }while(cursor.moveToNext());
+
+        tv_group_type.setText(type);
+//        String number = cursor.getString(cursor.getColumnIndex(MainFractionContract.InfantyEntry.))
 
 
     }

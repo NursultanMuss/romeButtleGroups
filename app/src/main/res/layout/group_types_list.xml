@@ -24,17 +24,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="text text"
-            android:textSize="24sp"
+            android:textSize="30sp"
             tools:layout_editor_absoluteX="90dp"
             tools:layout_editor_absoluteY="66dp" />
-
-        <TextView
-            android:id="@+id/tv_group_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="sdsdf114"
-            android:textSize="12sp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

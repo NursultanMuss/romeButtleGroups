@@ -60,13 +60,26 @@ public class DataAccess {
         c.moveToFirst();
         return c;
     }
+    public  Cursor getFracOtryadi(String fraction){
+        open();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        String[] sqlSelect = {"_id", "frac_name", "otryadi"};
+        String sqlTables = "fraction_otryad";
+        String selection = "frac_name = ?";
+        String[] selectionArgs = new String[]{fraction};
+        qb.setTables(sqlTables);
 
-    public Cursor getInfanti(String fraction){
+        Cursor c = qb.query(this.database, sqlSelect, selection,selectionArgs, null, null, null);
+        c.moveToFirst();
+        return c;
+    }
+
+    public Cursor getInfanty(String fraction){
         open();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         String[] sqlSelect = { "_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
                 "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
-                "kolvo", "tsena_naima", "tsena_soderzhaniya"};
+                "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group"};
         String sqlTables = "infanty";
         String selection = "Fraction = ?";
         String[] selectionArgs = new String[]{fraction};
@@ -131,10 +144,10 @@ public class DataAccess {
         c.moveToFirst();
         return c;
     }
-    public Cursor getGroupsType(String fraction){
-        open();
-        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-
-    }
+//    public Cursor getGroupsType(String fraction){
+//        open();
+//        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+//
+//    }
 
 }
