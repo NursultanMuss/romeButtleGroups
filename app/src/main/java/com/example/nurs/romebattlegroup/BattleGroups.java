@@ -38,6 +38,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
     private Cursor c_battleGroups;
     private DataAccess dbAccess;
     String frac;
+    String type_of_otryad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,9 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
 
         if (startedIntent.hasExtra(Intent.EXTRA_TEXT)){
             frac= startedIntent.getStringExtra(Intent.EXTRA_TEXT);
+        }
+        if(startedIntent.hasExtra("Type_of_otryad")){
+            type_of_otryad = startedIntent.getStringExtra("Type_of_otryad");
         }
 
 
@@ -125,7 +129,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
             public Cursor loadInBackground() {
                 dbAccess = DataAccess.getInstance(BattleGroups.this);
                 if(args == null){
-                    c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac);
+                    c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
                 }else if(args.getInt("selected_item_id")==1) {
                     c_battleGroups = dbAccess.getVozrastaniu(BattleGroups.this.frac);
                 }else if (args.getInt("selected_item_id") == 0){

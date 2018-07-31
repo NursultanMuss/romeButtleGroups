@@ -50,7 +50,6 @@ public class BattleTypesAdapter extends CursorAdapter {
 
         tv_group_type.setText(type);
 //        String number = cursor.getString(cursor.getColumnIndex(MainFractionContract.InfantyEntry.))
-
-
     }
+
 }

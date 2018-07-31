@@ -8,6 +8,8 @@ import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.nurs.romebattlegroup.data.DataAccess;
@@ -16,7 +18,6 @@ import com.example.nurs.romebattlegroup.data.FractionsDbHelper;
 public class BattleGroupTypes extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     ListView mListView;
     private BattleTypesAdapter mBattleTypesAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
     private FractionsDbHelper mDb;
     private Cursor c_types;
     private DataAccess databaseAccess;
@@ -29,10 +30,22 @@ public class BattleGroupTypes extends AppCompatActivity implements LoaderManager
         mListView = this.findViewById(R.id.types_list_view);
         getSupportLoaderManager().initLoader(0,null,this);
 
-        Intent startedIntent = this.getIntent();
+        final Intent startedIntent = this.getIntent();
         if (startedIntent.hasExtra(Intent.EXTRA_TEXT)){
             frac= startedIntent.getStringExtra(Intent.EXTRA_TEXT);
         }
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
+                String value = mListView.getAdapter().getItem(pos).toString();
+                Intent intent = new Intent(view.getContext(),BattleGroups.class);
+                intent.putExtra("Type_of_otryad",value);
+                intent.putExtra(Intent.EXTRA_TEXT, frac);
+                view.getContext().startActivity(intent);
+
+
+            }
+        });
     }
 
 
