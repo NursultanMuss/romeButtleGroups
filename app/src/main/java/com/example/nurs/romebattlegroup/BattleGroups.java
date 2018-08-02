@@ -26,6 +26,8 @@ import com.example.nurs.romebattlegroup.data.DataAccess;
 import com.example.nurs.romebattlegroup.data.FractionsDbHelper;
 import com.example.nurs.romebattlegroup.data.MainFractionContract;
 
+import org.w3c.dom.Text;
+
 public class BattleGroups extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,
         BattleGroupsAdapter.BattleGroupsAdapterOnClickHandler
 {
@@ -61,13 +63,15 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
 
+
         if (startedIntent.hasExtra(Intent.EXTRA_TEXT)){
             frac= startedIntent.getStringExtra(Intent.EXTRA_TEXT);
         }
         if(startedIntent.hasExtra("Type_of_otryad")){
             type_of_otryad = startedIntent.getStringExtra("Type_of_otryad");
         }
-        Toast.makeText(this, type_of_otryad, Toast.LENGTH_SHORT).show();
+        TextView textViewOtr= (TextView)topToolBar.findViewById(R.id.type_of_otr);
+        textViewOtr.setText(type_of_otryad);
 
 
 
