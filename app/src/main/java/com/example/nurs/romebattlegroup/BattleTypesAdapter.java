@@ -1,10 +1,12 @@
 package com.example.nurs.romebattlegroup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
@@ -52,4 +54,12 @@ public class BattleTypesAdapter extends CursorAdapter {
 //        String number = cursor.getString(cursor.getColumnIndex(MainFractionContract.InfantyEntry.))
     }
 
+//    @Override
+//    public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+//        String text= adapterView.getChildAt(pos).findViewById(R.id.tv_group_type).toString();
+//        Intent intent = new Intent(view.getContext(),BattleGroups.class);
+//        intent.putExtra("Type_of_otryad",text);
+////        intent.putExtra(Intent.EXTRA_TEXT, frac);
+//        view.getContext().startActivity(intent);
+//    }
 }

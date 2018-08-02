@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.nurs.romebattlegroup.data.DataAccess;
 import com.example.nurs.romebattlegroup.data.FractionsDbHelper;
@@ -37,9 +38,11 @@ public class BattleGroupTypes extends AppCompatActivity implements LoaderManager
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
-                String value = mListView.getAdapter().getItem(pos).toString();
+                TextView text=(TextView) mListView.getChildAt(pos).findViewById(R.id.tv_group_type);
+                String textString = text.getText().toString();
                 Intent intent = new Intent(view.getContext(),BattleGroups.class);
-                intent.putExtra("Type_of_otryad",value);
+//                intent.putExtra("Type_of_otryad",value);
+                intent.putExtra("Type_of_otryad",textString);
                 intent.putExtra(Intent.EXTRA_TEXT, frac);
                 view.getContext().startActivity(intent);
 

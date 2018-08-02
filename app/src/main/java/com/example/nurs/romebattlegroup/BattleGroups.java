@@ -67,6 +67,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         if(startedIntent.hasExtra("Type_of_otryad")){
             type_of_otryad = startedIntent.getStringExtra("Type_of_otryad");
         }
+        Toast.makeText(this, type_of_otryad, Toast.LENGTH_SHORT).show();
 
 
 
@@ -133,7 +134,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
                 }else if(args.getInt("selected_item_id")==1) {
                     c_battleGroups = dbAccess.getVozrastaniu(BattleGroups.this.frac);
                 }else if (args.getInt("selected_item_id") == 0){
-                    c_battleGroups = dbAccess.getKrutosti(BattleGroups.this.frac);
+                    c_battleGroups = dbAccess.getKrutosti(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
                 }else if(args.getInt("selected_item_id") == 2){
                     c_battleGroups = dbAccess.getUbivaniu(BattleGroups.this.frac);
                 }

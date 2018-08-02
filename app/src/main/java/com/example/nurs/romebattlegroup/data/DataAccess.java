@@ -81,8 +81,8 @@ public class DataAccess {
                 "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
                 "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group"};
         String sqlTables = "infanty";
-        String selection = "Fraction = ? AND type_of_group = ?";
-        String[] selectionArgs = new String[]{fraction, type_of_otryad};
+        String selection = "type_of_group=?";
+        String[] selectionArgs = new String[]{ type_of_otryad};
 
         qb.setTables(sqlTables);
 
@@ -110,16 +110,16 @@ public class DataAccess {
         return c;
     }
 
-    public Cursor getKrutosti(String fraction){
+    public Cursor getKrutosti(String fraction, String type_of_otryad){
         open();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         String []  sqlSelect = { "_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
                 "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
-                "kolvo", "tsena_naima", "tsena_soderzhaniya"};
+                "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group"};
         String sqlTables = "infanty";
         String orderBy= "bliz_boi DESC";
-        String selection = "Fraction = ?";
-        String[] selectionArgs = new String[]{fraction};
+        String selection = "Fraction=? AND type_of_group=?";
+        String[] selectionArgs = new String[]{fraction, type_of_otryad};
 
         qb.setTables(sqlTables);
 
