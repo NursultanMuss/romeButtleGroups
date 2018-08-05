@@ -37,6 +37,12 @@ public final class MainFractionContract {
         public static final String COLUMN_TSENA_NAIMA = "tsena_naima";
         public static final String COLUMN_TSENA_SODERZHANIYA = "tsena_soderzhaniya";
         public static final String COLUMN_TYPE = "type_of_group";
+        public static final String COLUMN_SHIP_HP = "ship_hp";
+        public static final String COLUMN_SHIP_SPEED = "ship_speed";
+        public static final String COLUMN_URON_SNARYADA = "uron_snaryada";
+        public static final String COLUMN_DALNOST = "dalnost";
+        public static final String COLUMN_VISTREL_V_MIN = "vistrel_v_min";
+        public static final String COLUMN_BOEPRIPACY = "boepripasy";
     }
     public static class FracOtryadEntry implements BaseColumns{
         public static final String TABLE_NAME = "fraction_otryad";

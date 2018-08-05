@@ -86,6 +86,13 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         TextView tv_tsena_1;
         TextView tv_tsena_soderzhaniya_1;
 
+        TextView tv_ship_hp_1;
+        TextView tv_ship_speed_2;
+        TextView tv_uron_snaryada_1;
+        TextView tv_dalnost_2;
+        TextView tv_vystrel_v_minutu_3;
+
+
 
 
         public BattleGroupsAdapterViewHolder(View view){
@@ -102,6 +109,11 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
             tv_kolvo_1= view.findViewById(R.id.kolvo_4);
             tv_tsena_1 = view.findViewById(R.id.tsena_1);
             tv_tsena_soderzhaniya_1 = view.findViewById(R.id.tsena_soderzhaniya_1);
+            tv_ship_hp_1 = view.findViewById(R.id.ship_hp_1);
+            tv_ship_speed_2 = view.findViewById(R.id.ship_speed_2);
+            tv_uron_snaryada_1 = view.findViewById(R.id.uron_snaryada_1);
+            tv_dalnost_2 = view.findViewById(R.id.dalnost_2);
+            tv_vystrel_v_minutu_3 = view.findViewById(R.id.vystrel_v_minutu_3);
             view.setOnClickListener(this);
         }
 
@@ -137,6 +149,7 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         String zn_kolvo_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_KOLVO));
         String zn_tsena_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TSENA_NAIMA));
         String zn_tsena_soderzhaniya_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TSENA_SODERZHANIYA));
+        String zn_ship
 
         int imgId = holder.iv_image.getResources().getIdentifier(zn_image,"drawable", "com.example.nurs.romebattlegroup");
 

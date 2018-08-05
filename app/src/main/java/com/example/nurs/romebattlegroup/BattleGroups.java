@@ -41,6 +41,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
     private DataAccess dbAccess;
     String frac;
     String type_of_otryad;
+    TextView kolvo_otr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +72,25 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
             type_of_otryad = startedIntent.getStringExtra("Type_of_otryad");
         }
         TextView textViewOtr= (TextView)topToolBar.findViewById(R.id.type_of_otr);
+        kolvo_otr = (TextView) topToolBar.findViewById(R.id.kolvo_otr);
         textViewOtr.setText(type_of_otryad);
+        switch (type_of_otryad){
+            case "Пехота ближнего боя":
 
+        }
+
+        if(type_of_otryad == "Пехота ближнего боя"|| type_of_otryad =="Командование" || type_of_otryad =="Полководец" || type_of_otryad =="Пехота с копьями" ||
+                type_of_otryad =="Конница ближнего боя" || type_of_otryad =="Ударная конница" || type_of_otryad =="Слон" ||
+                type_of_otryad =="Особая боевая еденица"){
+            setContentView(R.layout.activity_battle_groups);
+        }else if (type_of_otryad == "Стрелки-пехотинцы"|| type_of_otryad == "Стрелки-всадники"|| type_of_otryad =="Дальнобойная машина" ||
+                type_of_otryad =="Стационарная дальнобойная машина"){
+            setContentView(R.layout.archers_list);
+        }else if(type_of_otryad == "Флотоводец" || type_of_otryad == "Корабль ближнего боя"){
+            setContentView(R.layout.ship_list);
+        }else if(type_of_otryad == "Стрелковый корабль" || type_of_otryad =="Корабль с дальнобойными машинами"){
+            setContentView(R.layout.ship_archer_list);
+        }
 
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -95,7 +113,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
                     case 2 : item=2;
                         break;
                 }
-                String itemStr = item + "";
+//                String itemStr = item + "";
 //                Toast.makeText(BattleGroups.this, itemStr, Toast.LENGTH_SHORT).show();
                 Bundle args = new Bundle();
                 args.putInt("selected_item_id", item);
@@ -114,20 +132,10 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
                 Toast.makeText(BattleGroups.this,"yoyo",Toast.LENGTH_SHORT).show();
             }
         });
-//        int selectedItemf = spinner.getSelectedItemPosition();
 
     }
-//    public void poKrutosti(){
-//        getSupportLoaderManager().
-//    }
 
-
-//    @Override
-//    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-//
-//    }
-
-    @Override
+        @Override
     public android.support.v4.content.Loader<Cursor> onCreateLoader(int id, final Bundle args) {
         return new CursorLoader(this){
             @Override
@@ -136,11 +144,11 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
                 if(args == null){
                     c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
                 }else if(args.getInt("selected_item_id")==1) {
-                    c_battleGroups = dbAccess.getVozrastaniu(BattleGroups.this.frac);
+                    c_battleGroups = dbAccess.getVozrastaniu(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
                 }else if (args.getInt("selected_item_id") == 0){
                     c_battleGroups = dbAccess.getKrutosti(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
                 }else if(args.getInt("selected_item_id") == 2){
-                    c_battleGroups = dbAccess.getUbivaniu(BattleGroups.this.frac);
+                    c_battleGroups = dbAccess.getUbivaniu(BattleGroups.this.frac,BattleGroups.this.type_of_otryad);
                 }
                 dbAccess.close();
                 return c_battleGroups;
@@ -153,11 +161,13 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         data.moveToFirst();
         mAdapter = new BattleGroupsAdapter(this,this,data);
         mRecyclerView.setAdapter(mAdapter);
+        kolvo_otr.setText("(" +Integer.toString(mAdapter.getItemCount())+")");
     }
 
     @Override
     public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
         mAdapter.swapCursor(c_battleGroups);
+        kolvo_otr.setText("(" +Integer.toString(mAdapter.getItemCount())+")");
     }
 
 

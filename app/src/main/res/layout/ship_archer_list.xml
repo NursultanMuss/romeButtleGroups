@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/battle_group_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/rom_armour_legionaries"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/battle_group_name"
+        app:srcCompat="@drawable/rom_armour_legionaries" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:columnCount="3"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/battle_group_name">
+
+
+        <TextView
+            android:id="@+id/ship_hp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="HP корабля"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/ship_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Скорость корабля"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/ship_hp_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_column="0"
+            android:text="58"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/ship_speed_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_column="1"
+            android:text="35"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/uron_snaryada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Урон снаряда"
+            android:layout_column="0"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/dalnost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Дальность"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/vystrel_v_minutu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Выстрел/мин"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/uron_snaryada_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="58"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/dalnost_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="35"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/vystrel_v_minutu_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="15"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/bliz_boi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Ближ. бой"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/uronoruzhiem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Урон оружием"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/natisk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Натиск"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/bliz_boi_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="58"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/uronoruzhiem_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="35"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/natisk_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="15"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/zhashita"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:maxWidth="70dp"
+            android:text="Защита в ближ. бою"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/bronia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Броня"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/HP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:maxWidth="65dp"
+            android:text="Очки Здоровья"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/zhashita_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="51"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/bronia_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="95"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/HP_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="60"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/Moral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Боевой дух"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/kolvo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="Количество"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/Moral_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_marginLeft="4dp"
+            android:text="65"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/kolvo_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:text="160"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tsena"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:layout_marginLeft="4dp"
+            android:text="Цена"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tsena_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="930"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tsena_soderzhaniya"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:layout_marginLeft="4dp"
+            android:text="Цена содержания" />
+
+        <TextView
+            android:id="@+id/tsena_soderzhaniya_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="160" />
+
+    </GridLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp"
+        app:layout_constraintGuide_percent="0.07" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+</android.support.constraint.ConstraintLayout>
