@@ -12,12 +12,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.example.nurs.romebattlegroup.data.DataAccess;
 import com.example.nurs.romebattlegroup.data.FractionsDbHelper;
 
 public class BattleGroupTypes extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-    ListView mListView;
+    RecyclerView mRecyclerView;
     private BattleTypesAdapter mBattleTypesAdapter;
     private FractionsDbHelper mDb;
     private Cursor c_types;
@@ -28,10 +30,14 @@ public class BattleGroupTypes extends AppCompatActivity implements LoaderManager
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.battle_group_types);
-        mListView = this.findViewById(R.id.types_list_view);
+        mRecyclerView = this.findViewById(R.id.types_list_view);
+        mRecyclerView.setHasFixedSize(false);
         getSupportLoaderManager().initLoader(0,null,this);
 
         final Intent startedIntent = this.getIntent();
+//        Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(topToolBar);
+
         if (startedIntent.hasExtra(Intent.EXTRA_TEXT)){
             frac= startedIntent.getStringExtra(Intent.EXTRA_TEXT);
         }
@@ -40,6 +46,7 @@ public class BattleGroupTypes extends AppCompatActivity implements LoaderManager
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id) {
                 TextView text=(TextView) mListView.getChildAt(pos).findViewById(R.id.tv_group_type);
                 String textString = text.getText().toString();
+                Toast.makeText(BattleGroupTypes.this, textString, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(),BattleGroups.class);
 //                intent.putExtra("Type_of_otryad",value);
                 intent.putExtra("Type_of_otryad",textString);
@@ -69,7 +76,7 @@ public class BattleGroupTypes extends AppCompatActivity implements LoaderManager
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         data.moveToFirst();
         mBattleTypesAdapter = new BattleTypesAdapter(this, data,0);
-        mListView.setAdapter(mBattleTypesAdapter);
+        mRecyclerView.setAdapter(mBattleTypesAdapter);
     }
 
     @Override

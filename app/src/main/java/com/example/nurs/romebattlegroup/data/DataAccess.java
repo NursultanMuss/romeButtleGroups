@@ -47,22 +47,22 @@ public class DataAccess {
 
     String [] Vybor(String type_of_otryad){
         String [] vybor =null;
-            if(type_of_otryad == "Пехота ближнего боя"|| type_of_otryad =="Командование" || type_of_otryad =="Полководец" || type_of_otryad =="Пехота с копьями" ||
-                    type_of_otryad =="Конница ближнего боя" || type_of_otryad =="Ударная конница" || type_of_otryad =="Слон" ||
-                    type_of_otryad =="Особая боевая еденица"){
+            if(type_of_otryad.equals("Пехота ближнего боя") || type_of_otryad.equals("Командование") || type_of_otryad.equals("Полководец") || type_of_otryad.equals("Пехота с копьями") ||
+                    type_of_otryad.equals("Конница ближнего боя") || type_of_otryad.equals("Ударная конница") || type_of_otryad.equals("Слон") ||
+                    type_of_otryad.equals("Особая боевая еденица")){
                  vybor = new String[] { "_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
                         "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
                         "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group"};}
-                else if( type_of_otryad == "Стрелки-пехотинцы"|| type_of_otryad == "Стрелки-всадники"|| type_of_otryad =="Дальнобойная машина" ||
-                    type_of_otryad =="Стационарная дальнобойная машина") {
+                else if( type_of_otryad.equals( "Стрелки-пехотинцы")|| type_of_otryad.equals( "Стрелки-всадники")|| type_of_otryad.equals("Дальнобойная машина") ||
+                    type_of_otryad.equals("Стационарная дальнобойная машина")) {
                 vybor = new String[]{"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
                         "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
                         "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy"};}
-                else if (type_of_otryad == "Флотоводец" || type_of_otryad == "Корабль ближнего боя"){
+                else if (type_of_otryad.equals("Флотоводец")|| type_of_otryad.equals( "Корабль ближнего боя")){
                 vybor = new String[]{"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
                         "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
                         "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp", "ship_speed"};}
-                else if (type_of_otryad == "Стрелковый корабль" || type_of_otryad =="Корабль с дальнобойными машинами"){
+                else if (type_of_otryad.equals("Стрелковый корабль") || type_of_otryad.equals("Корабль с дальнобойными машинами")){
                 vybor = new String[] {"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
                         "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
                         "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp", "ship_speed",  "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy"};}
@@ -151,7 +151,7 @@ public class DataAccess {
         String [] sqlSelect =Vybor(type_of_otryad);
         String sqlTables = "infanty";
         String orderBy= "tsena_naima DESC";
-        String selection = "Fraction = ? AND type_of_group=?";
+        String selection = "Fraction=? AND type_of_group=?";
         String[] selectionArgs = new String[]{fraction,type_of_otryad};
 
         qb.setTables(sqlTables);

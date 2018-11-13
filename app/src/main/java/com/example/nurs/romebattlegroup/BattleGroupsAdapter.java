@@ -27,6 +27,7 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
     private int mRowIDColumn;
     private boolean mDataValid;
     private Context mContext;
+    private String mType;
     final private BattleGroupsAdapterOnClickHandler mClickHandler;
 
     public void changeCursor(Cursor cursor) {
@@ -66,10 +67,12 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         void onClickListener (String str);
     }
 
-    public BattleGroupsAdapter( BattleGroupsAdapterOnClickHandler handler, Context context, Cursor cursor){
+    public BattleGroupsAdapter( BattleGroupsAdapterOnClickHandler handler, Context context, Cursor cursor, String type){
         mClickHandler = handler;
         mContext = context;
         mCursor = cursor;
+        mType = type;
+
     }
 
     public class BattleGroupsAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -126,6 +129,20 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
     @Override
     public BattleGroupsAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         int layoutIdForListItem = R.layout.battle_group_list;
+//        if(mType.equals("Пехота ближнего боя") || mType.equals("Командование" )|| mType.equals("Полководец") || mType.equals("Пехота с копьями" )||
+//                mType.equals("Конница ближнего боя" ) || mType.equals("Ударная конница") || mType.equals("Слон") ||
+//                mType.equals("Особая боевая еденица")){
+//            layoutIdForListItem = R.layout.battle_group_list;
+//        }else if (mType.equals("Стрелки-пехотинцы") || mType.equals("Стрелки-всадники") || mType.equals("Дальнобойная машина") ||
+//                mType.equals("Стационарная дальнобойная машина")){
+//
+//            layoutIdForListItem = R.layout.archers_list;
+//        }else if(mType.equals("Флотоводец") || mType.equals("Корабль ближнего боя") ){
+//            layoutIdForListItem =R.layout.ship_list;
+//        }else {
+//            layoutIdForListItem =R.layout.ship_archer_list;
+//        }
+
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(layoutIdForListItem, parent, false);
         return new BattleGroupsAdapterViewHolder(view);
@@ -149,7 +166,44 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         String zn_kolvo_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_KOLVO));
         String zn_tsena_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TSENA_NAIMA));
         String zn_tsena_soderzhaniya_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TSENA_SODERZHANIYA));
-        String zn_ship
+
+//        String zn_ship_hp_1="";
+//        String zn_ship_speed_2 ="";
+//        String zn_uron_snaryada_1="";
+//        String zn_dalnost_2="";
+//        String zn_vystrel_v_minutu_3="";
+
+//        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP)) != null){
+//            zn_ship_hp_1= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP));
+//            zn_ship_speed_2= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_SPEED));
+//            holder.tv_ship_hp_1.setText(zn_ship_hp_1);
+//            holder.tv_ship_speed_2.setText(zn_ship_speed_2);
+//        }
+//        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_URON_SNARYADA )) != null){
+//            zn_uron_snaryada_1= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_URON_SNARYADA));
+//            zn_dalnost_2= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DALNOST));
+//            zn_vystrel_v_minutu_3= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_VISTREL_V_MIN));
+//            holder.tv_uron_snaryada_1.setText(zn_uron_snaryada_1);
+//            holder.tv_dalnost_2.setText(zn_dalnost_2);
+//            holder.tv_vystrel_v_minutu_3.setText(zn_vystrel_v_minutu_3);
+//        }
+//        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP)) != null ||
+//                mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_URON_SNARYADA )) != null){
+//            zn_ship_hp_1= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP));
+//            zn_ship_speed_2= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_SPEED));
+//            zn_uron_snaryada_1= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_URON_SNARYADA));
+//            zn_dalnost_2= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DALNOST));
+//            zn_vystrel_v_minutu_3= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_VISTREL_V_MIN));
+//
+//            holder.tv_ship_hp_1.setText(zn_ship_hp_1);
+//            holder.tv_ship_speed_2.setText(zn_ship_speed_2);
+//            holder.tv_uron_snaryada_1.setText(zn_uron_snaryada_1);
+//            holder.tv_dalnost_2.setText(zn_dalnost_2);
+//            holder.tv_vystrel_v_minutu_3.setText(zn_vystrel_v_minutu_3);
+//        }
+
+
+
 
         int imgId = holder.iv_image.getResources().getIdentifier(zn_image,"drawable", "com.example.nurs.romebattlegroup");
 
@@ -165,6 +219,8 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         holder.tv_kolvo_1.setText(zn_kolvo_1);
         holder.tv_tsena_1.setText(zn_tsena_1);
         holder.tv_tsena_soderzhaniya_1.setText(zn_tsena_soderzhaniya_1);
+
+
     }
 
     @Override

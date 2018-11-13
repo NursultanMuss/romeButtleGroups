@@ -3,6 +3,7 @@ package com.example.nurs.romebattlegroup;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +13,14 @@ import android.widget.TextView;
 
 import com.example.nurs.romebattlegroup.data.MainFractionContract;
 
-public class BattleTypesAdapter extends CursorAdapter {
+public class BattleTypesAdapter extends RecyclerView.Adapter<BattleTypesAdapter.BattleTypesAdapterViewHolder> {
     private Cursor mCursor;
     private Context mContext;
     TextView tv_group_type;
+    final private BattleTypesAdapterOnClickHandler mClickHandler;
 
 
     public BattleTypesAdapter(Context context, Cursor c, int flags) {
-        super(context, c, flags);
         mContext = context;
     }
 

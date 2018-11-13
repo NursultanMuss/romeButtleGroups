@@ -74,23 +74,23 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         TextView textViewOtr= (TextView)topToolBar.findViewById(R.id.type_of_otr);
         kolvo_otr = (TextView) topToolBar.findViewById(R.id.kolvo_otr);
         textViewOtr.setText(type_of_otryad);
-        switch (type_of_otryad){
-            case "Пехота ближнего боя":
+//        switch (type_of_otryad){
+//            case "Пехота ближнего боя":
+//
+//        }
 
-        }
-
-        if(type_of_otryad == "Пехота ближнего боя"|| type_of_otryad =="Командование" || type_of_otryad =="Полководец" || type_of_otryad =="Пехота с копьями" ||
-                type_of_otryad =="Конница ближнего боя" || type_of_otryad =="Ударная конница" || type_of_otryad =="Слон" ||
-                type_of_otryad =="Особая боевая еденица"){
-            setContentView(R.layout.activity_battle_groups);
-        }else if (type_of_otryad == "Стрелки-пехотинцы"|| type_of_otryad == "Стрелки-всадники"|| type_of_otryad =="Дальнобойная машина" ||
-                type_of_otryad =="Стационарная дальнобойная машина"){
-            setContentView(R.layout.archers_list);
-        }else if(type_of_otryad == "Флотоводец" || type_of_otryad == "Корабль ближнего боя"){
-            setContentView(R.layout.ship_list);
-        }else if(type_of_otryad == "Стрелковый корабль" || type_of_otryad =="Корабль с дальнобойными машинами"){
-            setContentView(R.layout.ship_archer_list);
-        }
+//        if(type_of_otryad == "Пехота ближнего боя"|| type_of_otryad =="Командование" || type_of_otryad =="Полководец" || type_of_otryad =="Пехота с копьями" ||
+//                type_of_otryad =="Конница ближнего боя" || type_of_otryad =="Ударная конница" || type_of_otryad =="Слон" ||
+//                type_of_otryad =="Особая боевая еденица"){
+//            setContentView(R.layout.battle_group_list);
+//        }else if (type_of_otryad == "Стрелки-пехотинцы"|| type_of_otryad == "Стрелки-всадники"|| type_of_otryad =="Дальнобойная машина" ||
+//                type_of_otryad =="Стационарная дальнобойная машина"){
+//            setContentView(R.layout.archers_list);
+//        }else if(type_of_otryad == "Флотоводец" || type_of_otryad == "Корабль ближнего боя"){
+//            setContentView(R.layout.ship_list);
+//        }else if(type_of_otryad == "Стрелковый корабль" || type_of_otryad =="Корабль с дальнобойными машинами"){
+//            setContentView(R.layout.ship_archer_list);
+//        }
 
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -159,7 +159,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(android.support.v4.content.Loader<Cursor> loader, Cursor data) {
         data.moveToFirst();
-        mAdapter = new BattleGroupsAdapter(this,this,data);
+        mAdapter = new BattleGroupsAdapter(this,this,data, type_of_otryad);
         mRecyclerView.setAdapter(mAdapter);
         kolvo_otr.setText("(" +Integer.toString(mAdapter.getItemCount())+")");
     }
