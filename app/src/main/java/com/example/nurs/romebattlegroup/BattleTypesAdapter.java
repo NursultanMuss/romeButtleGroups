@@ -16,11 +16,12 @@ import com.example.nurs.romebattlegroup.data.MainFractionContract;
 public class BattleTypesAdapter extends RecyclerView.Adapter<BattleTypesAdapter.BattleTypesAdapterViewHolder> {
     private Cursor mCursor;
     private Context mContext;
-    TextView tv_group_type;
+
     final private BattleTypesAdapterOnClickHandler mClickHandler;
 
 
-    public BattleTypesAdapter(Context context, Cursor c, int flags) {
+    public BattleTypesAdapter(BattleTypesAdapterOnClickHandler handler, Context context, Cursor c, int flags) {
+        mClickHandler = handler;
         mContext = context;
     }
 
@@ -53,6 +54,42 @@ public class BattleTypesAdapter extends RecyclerView.Adapter<BattleTypesAdapter.
 
         tv_group_type.setText(type);
 //        String number = cursor.getString(cursor.getColumnIndex(MainFractionContract.InfantyEntry.))
+    }
+
+    public class BattleTypesAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        TextView tv_group_type;
+
+        public BattleTypesAdapterViewHolder(View view){
+            super(view);
+            tv_group_type = view.findViewById(R.id.tv_group_type);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+
+        }
+    }
+
+    @Override
+    public BattleTypesAdapter.BattleTypesAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+      int layoutIdForListItem = R.layout.group_types_list;
+      LayoutInflater inflater = LayoutInflater.from(mContext);
+      View view = inflater.inflate(layoutIdForListItem,parent,false);
+      return new BattleTypesAdapterViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(BattleTypesAdapter.BattleTypesAdapterViewHolder holder, int position) {
+        if(!mCursor.moveToPosition(position))return;
+
+        String zn_group_type = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.))
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return 0;
     }
 
 //    @Override
