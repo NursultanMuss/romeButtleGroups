@@ -76,7 +76,7 @@ public class BattleTypesAdapter extends RecyclerView.Adapter<BattleTypesAdapter.
             Intent intent;
             String group_type = tv_group_type.getText().toString();
             intent = new Intent(view.getContext(),BattleGroups.class);
-            intent.putExtra(Intent.EXTRA_TEXT,group_type);
+            intent.putExtra("Type_of_otryad",group_type);
             view.getContext().startActivity(intent);
         }
     }
