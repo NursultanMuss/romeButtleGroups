@@ -29,7 +29,7 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
     private Context mContext;
     private String mType;
     final private BattleGroupsAdapterOnClickHandler mClickHandler;
-
+//Замена и обновление курсора после выбора метода сортировки списка в тулбаре
     public void changeCursor(Cursor cursor) {
         Cursor old = swapCursor(cursor);
         if (old != null) {
@@ -129,19 +129,6 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
     @Override
     public BattleGroupsAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         int layoutIdForListItem = R.layout.battle_group_list;
-//        if(mType.equals("Пехота ближнего боя") || mType.equals("Командование" )|| mType.equals("Полководец") || mType.equals("Пехота с копьями" )||
-//                mType.equals("Конница ближнего боя" ) || mType.equals("Ударная конница") || mType.equals("Слон") ||
-//                mType.equals("Особая боевая еденица")){
-//            layoutIdForListItem = R.layout.battle_group_list;
-//        }else if (mType.equals("Стрелки-пехотинцы") || mType.equals("Стрелки-всадники") || mType.equals("Дальнобойная машина") ||
-//                mType.equals("Стационарная дальнобойная машина")){
-//
-//            layoutIdForListItem = R.layout.archers_list;
-//        }else if(mType.equals("Флотоводец") || mType.equals("Корабль ближнего боя") ){
-//            layoutIdForListItem =R.layout.ship_list;
-//        }else {
-//            layoutIdForListItem =R.layout.ship_archer_list;
-//        }
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(layoutIdForListItem, parent, false);

@@ -17,14 +17,14 @@ public class BattleTypesAdapter extends RecyclerView.Adapter<BattleTypesAdapter.
     private Cursor mCursor;
     private Context mContext;
 
-    final private BattleTypesAdapterOnClickHandler mClickHandler;
+    final private BattleTypesAdapterClickListener mClickListener;
 
-    public interface BattleTypesAdapterOnClickHandler{
-        void onClickListener (String str);
+    public interface BattleTypesAdapterClickListener{
+        void onClickListener (String groupType);
     }
 
-    public BattleTypesAdapter(BattleTypesAdapterOnClickHandler handler, Context context, Cursor c) {
-        mClickHandler = handler;
+    public BattleTypesAdapter(BattleTypesAdapterClickListener listener, Context context, Cursor c) {
+        mClickListener = listener;
         mContext = context;
         mCursor = c;
     }
@@ -63,21 +63,19 @@ public class BattleTypesAdapter extends RecyclerView.Adapter<BattleTypesAdapter.
 
     public class BattleTypesAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView tv_group_type;
+        View v_types_list_view;
 
         public BattleTypesAdapterViewHolder(View view){
             super(view);
             tv_group_type = view.findViewById(R.id.tv_group_type);
+            v_types_list_view = view.findViewById(R.id.types_view);
             view.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            int adapterPosition = getAdapterPosition();
-            Intent intent;
             String group_type = tv_group_type.getText().toString();
-            intent = new Intent(view.getContext(),BattleGroups.class);
-            intent.putExtra("Type_of_otryad",group_type);
-            view.getContext().startActivity(intent);
+            mClickListener.onClickListener(group_type);
         }
     }
 
@@ -91,7 +89,11 @@ public class BattleTypesAdapter extends RecyclerView.Adapter<BattleTypesAdapter.
 
     @Override
     public void onBindViewHolder(BattleTypesAdapter.BattleTypesAdapterViewHolder holder, int position) {
-        if(!mCursor.moveToPosition(position))return;
+        if(!mCursor.moveToPosition(position)){
+         mCursor.moveToPosition(position-1);
+            holder.v_types_list_view.setVisibility(View.INVISIBLE);
+            return;
+        }
 
         String zn_group_type = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.FracOtryadEntry.COLUMN_OTRYADI));
 
@@ -103,12 +105,4 @@ public class BattleTypesAdapter extends RecyclerView.Adapter<BattleTypesAdapter.
           return mCursor.getCount();
     }
 
-//    @Override
-//    public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
-//        String text= adapterView.getChildAt(pos).findViewById(R.id.tv_group_type).toString();
-//        Intent intent = new Intent(view.getContext(),BattleGroups.class);
-//        intent.putExtra("Type_of_otryad",text);
-////        intent.putExtra(Intent.EXTRA_TEXT, frac);
-//        view.getContext().startActivity(intent);
-//    }
 }

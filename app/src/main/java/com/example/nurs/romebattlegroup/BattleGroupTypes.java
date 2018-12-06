@@ -20,14 +20,14 @@ import com.example.nurs.romebattlegroup.data.DataAccess;
 import com.example.nurs.romebattlegroup.data.FractionsDbHelper;
 
 public class BattleGroupTypes extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,
-BattleTypesAdapter.BattleTypesAdapterOnClickHandler{
+BattleTypesAdapter.BattleTypesAdapterClickListener{
     RecyclerView mRecyclerView;
     private BattleTypesAdapter mBattleTypesAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private FractionsDbHelper mDb;
     private Cursor c_types;
     private DataAccess databaseAccess;
-    String frac;
+    static String frac;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +80,7 @@ BattleTypesAdapter.BattleTypesAdapterOnClickHandler{
         data.moveToFirst();
         mBattleTypesAdapter = new BattleTypesAdapter(this,this,data);
         mRecyclerView.setAdapter(mBattleTypesAdapter);
+
     }
 
     @Override
@@ -87,8 +88,13 @@ BattleTypesAdapter.BattleTypesAdapterOnClickHandler{
 
     }
 
-    @Override
-    public void onClickListener(String str) {
 
+    @Override
+    public void onClickListener(String groupType) {
+        Intent intent;
+       intent = new Intent(this, BattleGroups.class);
+       intent.putExtra("Type_of_otryad", groupType);
+       intent.putExtra(Intent.EXTRA_TEXT, frac);
+       startActivity(intent);
     }
 }
