@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.nurs.romebattlegroup">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,10 +21,11 @@
         </activity>
         <activity
             android:name=".BattleGroups"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".BattleGroupTypes">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".BattleGroupTypes"
+                />
         </activity>
         <activity
             android:name=".BattleGroupTypes"

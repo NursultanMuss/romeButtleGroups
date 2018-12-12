@@ -80,7 +80,6 @@ BattleTypesAdapter.BattleTypesAdapterClickListener{
         data.moveToFirst();
         mBattleTypesAdapter = new BattleTypesAdapter(this,this,data);
         mRecyclerView.setAdapter(mBattleTypesAdapter);
-
     }
 
     @Override

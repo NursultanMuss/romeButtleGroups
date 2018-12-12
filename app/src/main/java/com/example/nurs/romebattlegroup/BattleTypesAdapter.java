@@ -90,15 +90,23 @@ public class BattleTypesAdapter extends RecyclerView.Adapter<BattleTypesAdapter.
     @Override
     public void onBindViewHolder(BattleTypesAdapter.BattleTypesAdapterViewHolder holder, int position) {
         if(!mCursor.moveToPosition(position)){
-         mCursor.moveToPosition(position-1);
-            holder.v_types_list_view.setVisibility(View.INVISIBLE);
             return;
         }
+        if(position == (mCursor.getCount()-1)){
+            mCursor.moveToPosition(position);
+            holder.v_types_list_view.setVisibility(View.INVISIBLE);
+        }
+//        if(mCursor.moveToLast()){
+//            holder.v_types_list_view.setVisibility(View.INVISIBLE);
+//            mCursor.moveToPosition(position);
+//            return;
+//        }
 
         String zn_group_type = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.FracOtryadEntry.COLUMN_OTRYADI));
 
         holder.tv_group_type.setText(zn_group_type);
     }
+
 
     @Override
     public int getItemCount() {
