@@ -7,8 +7,8 @@
     tools:context="com.example.nurs.romebattlegroup.BattleGroupTypes">
 
     <!--<include-->
-        <!--android:id="@+id/toolbar"-->
-        <!--layout="@layout/toolbar"-->
+        <!--android:id="@collapsingToolbarlbar"-->
+        <!--layout="@laycollapsingToolbarlbar"-->
         <!--app:layout_constraintEnd_toEndOf="parent"-->
         <!--app:layout_constraintStart_toStartOf="parent"-->
         <!--app:layout_constraintTop_toTopOf="parent" />-->
