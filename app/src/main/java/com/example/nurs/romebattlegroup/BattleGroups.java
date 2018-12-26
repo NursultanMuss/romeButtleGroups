@@ -13,6 +13,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -61,8 +62,22 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         Intent startedIntent = this.getIntent();
 
         //ToolBar
+
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+//        topToolBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_back));
+//        topToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+
 
 
         if (startedIntent.hasExtra(Intent.EXTRA_TEXT)){
@@ -71,8 +86,8 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         if(startedIntent.hasExtra("Type_of_otryad")){
             type_of_otryad = startedIntent.getStringExtra("Type_of_otryad");
         }
-        TextView textViewOtr= (TextView)topToolBar.findViewById(R.id.type_of_otr);
-        kolvo_otr = (TextView) topToolBar.findViewById(R.id.kolvo_otr);
+        TextView textViewOtr= (TextView)findViewById(R.id.type_of_otr);
+        kolvo_otr = (TextView) findViewById(R.id.kolvo_otr);
         textViewOtr.setText(type_of_otryad);
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -117,7 +132,16 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
 
     }
 
-        @Override
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public android.support.v4.content.Loader<Cursor> onCreateLoader(int id, final Bundle args) {
         return new CursorLoader(this){
             @Override
