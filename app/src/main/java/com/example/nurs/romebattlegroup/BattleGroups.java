@@ -49,6 +49,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle_groups);
         mRecyclerView = this.findViewById(R.id.rv_battle_group);
+        mRecyclerView.setNestedScrollingEnabled(false);
         int orientation = getResources().getConfiguration().orientation;
         mRecyclerView.setHasFixedSize(false);
         if(orientation == Configuration.ORIENTATION_PORTRAIT){

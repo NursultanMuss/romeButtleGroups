@@ -109,6 +109,10 @@
                 android:layout_height="80dp"
                 app:layout_collapseMode="parallax"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
 
 
             </android.support.v7.widget.Toolbar>
