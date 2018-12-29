@@ -2,6 +2,7 @@ package com.example.nurs.romebattlegroup;
 
 import android.content.res.Configuration;
 import android.os.BaseBundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.content.Intent;
@@ -70,6 +71,8 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setTitle(null);
+
         }
 //        topToolBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_back));
 //        topToolBar.setNavigationOnClickListener(new View.OnClickListener() {
