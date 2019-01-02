@@ -68,12 +68,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
 
-        if(getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setTitle(null);
 
-        }
 //        topToolBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_back));
 //        topToolBar.setNavigationOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -91,8 +86,14 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
             type_of_otryad = startedIntent.getStringExtra("Type_of_otryad");
         }
         TextView textViewOtr= (TextView)findViewById(R.id.type_of_otr);
-        kolvo_otr = (TextView) findViewById(R.id.kolvo_otr);
-        textViewOtr.setText(type_of_otryad);
+//        kolvo_otr = (TextView) findViewById(R.id.kolvo_otr);
+//        textViewOtr.setText(type_of_otryad);
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setTitle(type_of_otryad);
+        }
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -171,13 +172,14 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         data.moveToFirst();
         mAdapter = new BattleGroupsAdapter(this,this,data, type_of_otryad);
         mRecyclerView.setAdapter(mAdapter);
-        kolvo_otr.setText("(" +Integer.toString(mAdapter.getItemCount())+")");
+        getSupportActionBar().setTitle(type_of_otryad + "(" +Integer.toString(mAdapter.getItemCount())+")" );
     }
 
     @Override
     public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
         mAdapter.swapCursor(c_battleGroups);
-        kolvo_otr.setText("(" +Integer.toString(mAdapter.getItemCount())+")");
+        getSupportActionBar().setTitle(type_of_otryad + "(" +Integer.toString(mAdapter.getItemCount())+")" );
+
     }
 
 
