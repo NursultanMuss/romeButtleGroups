@@ -3,6 +3,7 @@ package com.example.nurs.romebattlegroup;
 import android.content.res.Configuration;
 import android.os.BaseBundle;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.content.Intent;
@@ -68,6 +69,9 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
 
+        Toolbar collapsingToolbar = (Toolbar) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar.setTitle("Yoyoyoyo");
+
 
 //        topToolBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_back));
 //        topToolBar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -92,7 +96,8 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setTitle(type_of_otryad);
+            getSupportActionBar().setDisplayShowTitleEnabled(true);
+//            getSupportActionBar().setTitle("Hahaha");
         }
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -172,13 +177,14 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         data.moveToFirst();
         mAdapter = new BattleGroupsAdapter(this,this,data, type_of_otryad);
         mRecyclerView.setAdapter(mAdapter);
-        getSupportActionBar().setTitle(type_of_otryad + "(" +Integer.toString(mAdapter.getItemCount())+")" );
+        getSupportActionBar().setTitle("yoyo");
+//        getSupportActionBar().setLogo(R.drawable.roman_helmet);
     }
 
     @Override
     public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
         mAdapter.swapCursor(c_battleGroups);
-        getSupportActionBar().setTitle(type_of_otryad + "(" +Integer.toString(mAdapter.getItemCount())+")" );
+//        getSupportActionBar().setTitle(type_of_otryad + "(" +Integer.toString(mAdapter.getItemCount())+")" );
 
     }
 
