@@ -31,10 +31,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:titleTextColor="@android:color/white"
+                android:gravity="fill_horizontal"
                 app:layout_collapseMode="parallax"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+                >
 
-
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="30dip"
+                    android:layout_height="30dip"
+                    app:srcCompat="@drawable/roman_helmet"
+                    android:layout_marginRight="20dp"
+                    />
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    />
             </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
 

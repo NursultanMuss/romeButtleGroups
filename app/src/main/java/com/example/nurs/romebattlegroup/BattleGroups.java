@@ -45,6 +45,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
     String frac;
     String type_of_otryad;
     TextView kolvo_otr;
+    TextView tv_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +70,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         Toolbar topToolBar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(topToolBar);
 
-        Toolbar collapsingToolbar = (Toolbar) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbar.setTitle("Yoyoyoyo");
+
 
 
 //        topToolBar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_back));
@@ -89,15 +89,15 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         if(startedIntent.hasExtra("Type_of_otryad")){
             type_of_otryad = startedIntent.getStringExtra("Type_of_otryad");
         }
-        TextView textViewOtr= (TextView)findViewById(R.id.type_of_otr);
+        tv_title= (TextView)findViewById(R.id.toolbar_title);
 //        kolvo_otr = (TextView) findViewById(R.id.kolvo_otr);
 //        textViewOtr.setText(type_of_otryad);
 
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setDisplayShowTitleEnabled(true);
-//            getSupportActionBar().setTitle("Hahaha");
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         }
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -177,14 +177,14 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         data.moveToFirst();
         mAdapter = new BattleGroupsAdapter(this,this,data, type_of_otryad);
         mRecyclerView.setAdapter(mAdapter);
-        getSupportActionBar().setTitle("yoyo");
+        tv_title.setText(type_of_otryad + "(" +Integer.toString(mAdapter.getItemCount())+")");
 //        getSupportActionBar().setLogo(R.drawable.roman_helmet);
     }
 
     @Override
     public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
         mAdapter.swapCursor(c_battleGroups);
-//        getSupportActionBar().setTitle(type_of_otryad + "(" +Integer.toString(mAdapter.getItemCount())+")" );
+        tv_title.setText(type_of_otryad + "(" +Integer.toString(mAdapter.getItemCount())+")");
 
     }
 
