@@ -157,14 +157,14 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
             @Override
             public Cursor loadInBackground() {
                 dbAccess = DataAccess.getInstance(BattleGroups.this);
-                if(args == null){
-                    c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
-                }else if(args.getInt("selected_item_id")==1) {
+                if(args.getInt("selected_item_id")==1) {
                     c_battleGroups = dbAccess.getVozrastaniu(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
                 }else if (args.getInt("selected_item_id") == 0){
                     c_battleGroups = dbAccess.getKrutosti(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
                 }else if(args.getInt("selected_item_id") == 2){
                     c_battleGroups = dbAccess.getUbivaniu(BattleGroups.this.frac,BattleGroups.this.type_of_otryad);
+                }else if(args == null){
+                    c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
                 }
                 dbAccess.close();
                 return c_battleGroups;
