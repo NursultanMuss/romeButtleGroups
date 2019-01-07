@@ -101,7 +101,9 @@ public class DataAccess {
     public Cursor getInfanty(String fraction, String type_of_otryad){
         open();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        String [] sqlSelect =Vybor(type_of_otryad);
+        String [] sqlSelect =new String[] {"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
+                "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
+                "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp", "ship_speed",  "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy"};
         String sqlTables = "infanty";
         String selection = "Fraction=? AND type_of_group=?";
         String[] selectionArgs = new String[]{ fraction, type_of_otryad};
@@ -117,7 +119,9 @@ public class DataAccess {
     public Cursor getVozrastaniu(String fraction, String type_of_otryad){
         open();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        String [] sqlSelect =Vybor(type_of_otryad);
+        String [] sqlSelect =new String[] {"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
+                "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
+                "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp", "ship_speed",  "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy"};
         String sqlTables = "infanty";
         String orderBy= "tsena_naima";
         String selection = "Fraction=? AND type_of_group=? ";
@@ -133,7 +137,9 @@ public class DataAccess {
     public Cursor getKrutosti(String fraction, String type_of_otryad){
         open();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        String [] sqlSelect =Vybor(type_of_otryad);
+        String [] sqlSelect = new String[] {"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
+                "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
+                "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp", "ship_speed",  "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy"};
         String sqlTables = "infanty";
         String orderBy= "bliz_boi DESC";
         String selection = "Fraction=? AND type_of_group=?";
@@ -148,7 +154,9 @@ public class DataAccess {
     public Cursor getUbivaniu(String fraction, String type_of_otryad){
         open();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        String [] sqlSelect =Vybor(type_of_otryad);
+        String [] sqlSelect =new String[] {"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
+                "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
+                "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp", "ship_speed",  "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy"};
         String sqlTables = "infanty";
         String orderBy= "tsena_naima DESC";
         String selection = "Fraction=? AND type_of_group=?";

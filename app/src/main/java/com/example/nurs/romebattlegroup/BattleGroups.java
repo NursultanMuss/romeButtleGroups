@@ -157,14 +157,14 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
             @Override
             public Cursor loadInBackground() {
                 dbAccess = DataAccess.getInstance(BattleGroups.this);
-                if(args.getInt("selected_item_id")==1) {
-                    c_battleGroups = dbAccess.getVozrastaniu(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
+                if(args == null) {
+                    c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
                 }else if (args.getInt("selected_item_id") == 0){
                     c_battleGroups = dbAccess.getKrutosti(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
                 }else if(args.getInt("selected_item_id") == 2){
                     c_battleGroups = dbAccess.getUbivaniu(BattleGroups.this.frac,BattleGroups.this.type_of_otryad);
-                }else if(args == null){
-                    c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
+                }else if(args.getInt("selected_item_id")==1){
+                    c_battleGroups = dbAccess.getVozrastaniu(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
                 }
                 dbAccess.close();
                 return c_battleGroups;
@@ -178,6 +178,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         mAdapter = new BattleGroupsAdapter(this,this,data, type_of_otryad);
         mRecyclerView.setAdapter(mAdapter);
         tv_title.setText(type_of_otryad + "(" +Integer.toString(mAdapter.getItemCount())+")");
+//        data.close();
 //        getSupportActionBar().setLogo(R.drawable.roman_helmet);
     }
 
@@ -185,7 +186,6 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
     public void onLoaderReset(android.support.v4.content.Loader<Cursor> loader) {
         mAdapter.swapCursor(c_battleGroups);
         tv_title.setText(type_of_otryad + "(" +Integer.toString(mAdapter.getItemCount())+")");
-
     }
 
 

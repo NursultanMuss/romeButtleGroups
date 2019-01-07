@@ -28,6 +28,7 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
     private boolean mDataValid;
     private Context mContext;
     private String mType;
+
     final private BattleGroupsAdapterOnClickHandler mClickHandler;
 //Замена и обновление курсора после выбора метода сортировки списка в тулбаре
     public void changeCursor(Cursor cursor) {
@@ -95,10 +96,16 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         TextView tv_dalnost_2;
         TextView tv_vystrel_v_minutu_3;
 
+        TextView tv_ship_hp;
+        TextView tv_ship_speed;
+        TextView tv_uron_snaryada;
+        TextView tv_dalnost;
+        TextView tv_vys_v_min;
 
 
 
-        public BattleGroupsAdapterViewHolder(View view){
+
+        private BattleGroupsAdapterViewHolder(View view){
             super(view);
             tv_battle_group_name = view.findViewById(R.id.battle_group_name);
             iv_image = view.findViewById(R.id.imageView);
@@ -117,6 +124,12 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
             tv_uron_snaryada_1 = view.findViewById(R.id.uron_snaryada_1);
             tv_dalnost_2 = view.findViewById(R.id.dalnost_2);
             tv_vystrel_v_minutu_3 = view.findViewById(R.id.vystrel_v_minutu_3);
+
+            tv_ship_hp = view.findViewById(R.id.ship_hp);
+            tv_ship_speed = view.findViewById(R.id.ship_speed);
+            tv_uron_snaryada = view.findViewById(R.id.uron_snaryada);
+            tv_dalnost = view.findViewById(R.id.dalnost);
+            tv_vys_v_min = view.findViewById(R.id.vystrel_v_minutu);
             view.setOnClickListener(this);
         }
 
@@ -128,7 +141,7 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
 
     @Override
     public BattleGroupsAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        int layoutIdForListItem = R.layout.battle_group_list;
+        int layoutIdForListItem = R.layout.ship_archer_list;
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(layoutIdForListItem, parent, false);
@@ -154,11 +167,46 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         String zn_tsena_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TSENA_NAIMA));
         String zn_tsena_soderzhaniya_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TSENA_SODERZHANIYA));
 
-//        String zn_ship_hp_1="";
-//        String zn_ship_speed_2 ="";
-//        String zn_uron_snaryada_1="";
-//        String zn_dalnost_2="";
-//        String zn_vystrel_v_minutu_3="";
+        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP)) != null){
+            holder.tv_ship_hp.setVisibility(View.VISIBLE);
+            String zn_ship_hp_1= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP));
+            holder.tv_ship_hp_1.setText(zn_ship_hp_1);
+        }else{
+            holder.tv_ship_hp_1.setVisibility(View.GONE);
+            holder.tv_ship_hp.setVisibility(View.GONE);}
+
+        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_SPEED)) != null){
+            holder.tv_ship_speed.setVisibility(View.VISIBLE);
+            String zn_ship_speed_2 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_SPEED));
+            holder.tv_ship_speed_2.setText(zn_ship_speed_2);
+        }else{
+            holder.tv_ship_speed_2.setVisibility(View.GONE);
+            holder.tv_ship_speed.setVisibility(View.GONE);}
+
+        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_URON_SNARYADA)) != null){
+            holder.tv_uron_snaryada.setVisibility(View.VISIBLE);
+            String zn_uron_snaryada_1= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_URON_SNARYADA));
+            holder.tv_uron_snaryada_1.setText(zn_uron_snaryada_1);
+        }else{
+            holder.tv_uron_snaryada_1.setVisibility(View.GONE);
+            holder.tv_uron_snaryada.setVisibility(View.GONE);}
+        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DALNOST)) != null){
+            holder.tv_dalnost.setVisibility(View.VISIBLE);
+            String zn_dalnost_2= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DALNOST));
+            holder.tv_dalnost_2.setText(zn_dalnost_2);
+        }else{
+            holder.tv_dalnost_2.setVisibility(View.GONE);
+            holder.tv_dalnost.setVisibility(View.GONE);}
+
+        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_VISTREL_V_MIN)) != null){
+
+            String zn_vystrel_v_minutu_3= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_VISTREL_V_MIN));
+            holder.tv_vystrel_v_minutu_3.setText(zn_vystrel_v_minutu_3);
+            holder.tv_vys_v_min.setVisibility(View.VISIBLE);
+        }else{
+            holder.tv_vystrel_v_minutu_3.setVisibility(View.GONE);
+            holder.tv_vys_v_min.setVisibility(View.GONE);}
+
 
 //        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP)) != null){
 //            zn_ship_hp_1= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP));
