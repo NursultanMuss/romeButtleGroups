@@ -178,8 +178,6 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         mAdapter = new BattleGroupsAdapter(this,this,data, type_of_otryad);
         mRecyclerView.setAdapter(mAdapter);
         tv_title.setText(type_of_otryad + "(" +Integer.toString(mAdapter.getItemCount())+")");
-//        data.close();
-//        getSupportActionBar().setLogo(R.drawable.roman_helmet);
     }
 
     @Override

@@ -167,45 +167,7 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         String zn_tsena_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TSENA_NAIMA));
         String zn_tsena_soderzhaniya_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TSENA_SODERZHANIYA));
 
-        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP)) != null){
-            holder.tv_ship_hp.setVisibility(View.VISIBLE);
-            String zn_ship_hp_1= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP));
-            holder.tv_ship_hp_1.setText(zn_ship_hp_1);
-        }else{
-            holder.tv_ship_hp_1.setVisibility(View.GONE);
-            holder.tv_ship_hp.setVisibility(View.GONE);}
 
-        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_SPEED)) != null){
-            holder.tv_ship_speed.setVisibility(View.VISIBLE);
-            String zn_ship_speed_2 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_SPEED));
-            holder.tv_ship_speed_2.setText(zn_ship_speed_2);
-        }else{
-            holder.tv_ship_speed_2.setVisibility(View.GONE);
-            holder.tv_ship_speed.setVisibility(View.GONE);}
-
-        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_URON_SNARYADA)) != null){
-            holder.tv_uron_snaryada.setVisibility(View.VISIBLE);
-            String zn_uron_snaryada_1= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_URON_SNARYADA));
-            holder.tv_uron_snaryada_1.setText(zn_uron_snaryada_1);
-        }else{
-            holder.tv_uron_snaryada_1.setVisibility(View.GONE);
-            holder.tv_uron_snaryada.setVisibility(View.GONE);}
-        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DALNOST)) != null){
-            holder.tv_dalnost.setVisibility(View.VISIBLE);
-            String zn_dalnost_2= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DALNOST));
-            holder.tv_dalnost_2.setText(zn_dalnost_2);
-        }else{
-            holder.tv_dalnost_2.setVisibility(View.GONE);
-            holder.tv_dalnost.setVisibility(View.GONE);}
-
-        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_VISTREL_V_MIN)) != null){
-
-            String zn_vystrel_v_minutu_3= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_VISTREL_V_MIN));
-            holder.tv_vystrel_v_minutu_3.setText(zn_vystrel_v_minutu_3);
-            holder.tv_vys_v_min.setVisibility(View.VISIBLE);
-        }else{
-            holder.tv_vystrel_v_minutu_3.setVisibility(View.GONE);
-            holder.tv_vys_v_min.setVisibility(View.GONE);}
 
 
 //        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP)) != null){
@@ -254,6 +216,45 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         holder.tv_kolvo_1.setText(zn_kolvo_1);
         holder.tv_tsena_1.setText(zn_tsena_1);
         holder.tv_tsena_soderzhaniya_1.setText(zn_tsena_soderzhaniya_1);
+        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP)) != null){
+            holder.tv_ship_hp.setVisibility(View.VISIBLE);
+            String zn_ship_hp_1= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_HP));
+            holder.tv_ship_hp_1.setText(zn_ship_hp_1);
+        }else{
+            holder.tv_ship_hp_1.setVisibility(View.GONE);
+            holder.tv_ship_hp.setVisibility(View.GONE);}
+
+        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_SPEED)) != null){
+            holder.tv_ship_speed.setVisibility(View.VISIBLE);
+            String zn_ship_speed_2 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SHIP_SPEED));
+            holder.tv_ship_speed_2.setText(zn_ship_speed_2);
+        }else{
+            holder.tv_ship_speed_2.setVisibility(View.GONE);
+            holder.tv_ship_speed.setVisibility(View.GONE);}
+
+        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_URON_SNARYADA)) != null){
+            holder.tv_uron_snaryada.setVisibility(View.VISIBLE);
+            String zn_uron_snaryada_1= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_URON_SNARYADA));
+            holder.tv_uron_snaryada_1.setText(zn_uron_snaryada_1);
+        }else{
+            holder.tv_uron_snaryada_1.setVisibility(View.GONE);
+            holder.tv_uron_snaryada.setVisibility(View.GONE);}
+        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DALNOST)) != null){
+            holder.tv_dalnost.setVisibility(View.VISIBLE);
+            String zn_dalnost_2= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DALNOST));
+            holder.tv_dalnost_2.setText(zn_dalnost_2);
+        }else{
+            holder.tv_dalnost_2.setVisibility(View.GONE);
+            holder.tv_dalnost.setVisibility(View.GONE);}
+
+        if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_VISTREL_V_MIN)) != null){
+
+            String zn_vystrel_v_minutu_3= mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_VISTREL_V_MIN));
+            holder.tv_vystrel_v_minutu_3.setText(zn_vystrel_v_minutu_3);
+            holder.tv_vys_v_min.setVisibility(View.VISIBLE);
+        }else{
+            holder.tv_vystrel_v_minutu_3.setVisibility(View.GONE);
+            holder.tv_vys_v_min.setVisibility(View.GONE);}
 
 
     }
