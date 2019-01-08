@@ -24,8 +24,7 @@
             android:parentActivityName=".BattleGroupTypes">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".BattleGroupTypes"
-                />
+                android:value=".BattleGroupTypes" />
         </activity>
         <activity
             android:name=".BattleGroupTypes"
@@ -34,6 +33,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".OneSquad"></activity>
     </application>
 
 </manifest>
