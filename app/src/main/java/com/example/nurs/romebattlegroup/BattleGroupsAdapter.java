@@ -135,7 +135,8 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
 
         @Override
         public void onClick(View view) {
-
+            String squadName = tv_battle_group_name.getText().toString();
+            mClickHandler.onClickListener(squadName);
         }
     }
 
