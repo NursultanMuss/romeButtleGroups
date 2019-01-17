@@ -52,15 +52,15 @@ public class OneSquad extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
         TabsAdapter adapter = new TabsAdapter(getSupportFragmentManager());
-        adapter.addFragment(new FakePageFragment(),"Описание");
-        adapter.addFragment(new FakePageFragment(), "Видео");
+//        adapter.addFragment(new FakePageFragment(),"Описание");
+//        adapter.addFragment(new VideoFragment(), "Видео");
         viewPager.setAdapter(adapter);
 
 
     }
     private static class TabsAdapter extends FragmentStatePagerAdapter{
 
-        private final List<Fragment> mFragmentList = new ArrayList<>();
+//        private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
         TabsAdapter(FragmentManager fm) {
@@ -69,24 +69,33 @@ public class OneSquad extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return mFragmentList.size();
+            return 2;
         }
 
         @Override
         public Fragment getItem(int i) {
-            return mFragmentList.get(i);
+            switch(i){
+                case 0: return FakePageFragment.newInstance();
+                case 1: return VideoFragment.newInstance();
+                default:return FakePageFragment.newInstance();
+            }
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
+            switch(position){
+                case 0: return "Описание";
+                case 1: return "Video";
+                default:return "Video";
+            }
         }
 
-        public void addFragment(Fragment fragment, String title){
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
+//        public void addFragment(Fragment fragment, String title){
+//            mFragmentList.add(fragment);
+//            mFragmentTitleList.add(title);
+//
+//        }
 
-        }
 
     }
 }

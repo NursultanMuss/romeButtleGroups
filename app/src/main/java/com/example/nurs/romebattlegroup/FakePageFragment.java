@@ -43,9 +43,9 @@ public class FakePageFragment extends Fragment {
 //		mRootView.setAdapter(new FakePageAdapter(20));
 //	}
 
-//	public static Fragment newInstance() {
-//		return new FakePageFragment();
-//	}
+	public static Fragment newInstance() {
+		return new FakePageFragment();
+	}
 
 
 //	private static class FakePageAdapter extends RecyclerView.Adapter<FakePageVH> {
