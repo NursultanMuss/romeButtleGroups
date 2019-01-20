@@ -15,6 +15,10 @@
  */
 package com.example.nurs.romebattlegroup;
 
+import android.app.LoaderManager;
+import android.content.CursorLoader;
+import android.content.Loader;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,12 +27,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FakePageFragment extends Fragment {
-	private RecyclerView mRootView;
+import com.example.nurs.romebattlegroup.data.DataAccess;
+
+public class DescriptionFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
+	private DataAccess dbAccess;
+	Cursor cursor;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//		mRootView = (RecyclerView) inflater.inflate(R.layout.list_item_card, container, false);
+
 		View v = inflater.inflate(R.layout.list_item_card, container, false);
 		return v;
 	}
@@ -43,8 +50,35 @@ public class FakePageFragment extends Fragment {
 //		mRootView.setAdapter(new FakePageAdapter(20));
 //	}
 
-	public static Fragment newInstance() {
-		return new FakePageFragment();
+	public static Fragment newInstance(String frac, String squadName) {
+		DescriptionFragment desFragment= new DescriptionFragment();
+		Bundle bundle = new Bundle();
+		bundle.putString("fraction",frac);
+		bundle.putString("squadName", squadName);
+		desFragment.setArguments(bundle);
+		return desFragment;
+	}
+
+	@Override
+	public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+		return new CursorLoader(getContext()){
+			@Override
+			public Cursor loadInBackground() {
+				dbAccess = DataAccess.getInstance(getContext());
+
+				return cursor;
+			}
+		};
+	}
+
+	@Override
+	public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+
+	}
+
+	@Override
+	public void onLoaderReset(Loader<Cursor> loader) {
+
 	}
 
 

@@ -6,25 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <fragment
-        android:id="@+id/youtubePlayerView"
-        android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
+    <FrameLayout
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/text_video"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Yoyo"
-        android:textSize="16sp"/>
-
-    <Button
-        android:id="@+id/buttonPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:text="Play" />
+        android:id="@+id/youtubeFragment" />
 
 
 </android.widget.LinearLayout>

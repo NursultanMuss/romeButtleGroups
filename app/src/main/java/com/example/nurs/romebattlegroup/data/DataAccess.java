@@ -84,6 +84,7 @@ public class DataAccess {
         c.moveToFirst();
         return c;
     }
+
     public  Cursor getFracOtryadi(String fraction){
         open();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
@@ -115,6 +116,17 @@ public class DataAccess {
 
         c.moveToFirst();
         return c;
+    }
+    public Cursor getDescription(String fraction, String squad){
+        open();
+        SQLiteQueryBuilder qb= new SQLiteQueryBuilder();
+        String sqlTables = "infanty";
+        String [] sqlSelect = {};
+        String selection = "Fraction=? AND battle_group_name=?";
+        String [] selectionArgs = new String[]{ fraction, squad};
+        qb.setTables(sqlTables);
+        Cursor c = qb.query(this.database, sqlSelect,selection,selectionArgs, null,null,null);
+
     }
     public Cursor getVozrastaniu(String fraction, String type_of_otryad){
         open();

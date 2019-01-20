@@ -24,7 +24,7 @@
             app:expandedTitleGravity="top"
             app:expandedTitleMarginEnd="32dp"
             app:expandedTitleMarginStart="16dp"
-            app:layout_scrollFlags="scroll|enterAlways|snap">
+            app:layout_scrollFlags="scroll|snap">
 
             <ImageView
                 android:id="@+id/imageViewSquad"
@@ -34,32 +34,31 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/vet_legioners"
                 app:layout_collapseMode="parallax" />
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/squad_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:titleTextColor="@android:color/white"
-                android:gravity="center_horizontal"
-                app:layout_collapseMode="parallax"
-                >
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="30dip"
-                    android:layout_height="30dip"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/roman_helmet"
-                    android:layout_marginRight="20dp"
-                    />
-                <TextView
-                    android:id="@+id/toolbar_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView"
-                    />
-            </android.support.v7.widget.Toolbar>
         </android.support.design.widget.CollapsingToolbarLayout>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/squad_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:titleTextColor="@android:color/white"
+            android:gravity="center_horizontal"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            >
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="30dip"
+                android:layout_height="30dip"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/roman_helmet"
+                android:layout_marginRight="20dp"
+                />
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                />
+        </android.support.v7.widget.Toolbar>
         <android.support.design.widget.TabLayout
             android:id="@+id/materialTabs"
             android:layout_width="fill_parent"
@@ -77,7 +76,8 @@
         android:id="@+id/materialup_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_scrollFlags="scroll|enterAlwaysCollapsed|snap"/>
 
 
 </android.support.design.widget.CoordinatorLayout>

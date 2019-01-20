@@ -1,28 +1,36 @@
 package com.example.nurs.romebattlegroup;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.example.nurs.romebattlegroup.data.DataAccess;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class OneSquad extends AppCompatActivity {
+public class OneSquad extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
     Toolbar toolbar;
 //    TabLayout tabLayout;
 //    private int mMaxScrollSize;
-    String frac;
+    private String frac;
     String squadName;
+    private DataAccess dbAccess;
+    private Cursor c_squad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,20 +59,46 @@ public class OneSquad extends AppCompatActivity {
         }
 
         tabLayout.setupWithViewPager(viewPager);
-        TabsAdapter adapter = new TabsAdapter(getSupportFragmentManager());
-//        adapter.addFragment(new FakePageFragment(),"Описание");
-//        adapter.addFragment(new VideoFragment(), "Видео");
+        TabsAdapter adapter = new TabsAdapter(getSupportFragmentManager(),frac,squadName);
         viewPager.setAdapter(adapter);
 
 
     }
-    private static class TabsAdapter extends FragmentStatePagerAdapter{
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return new CursorLoader(this){
+            @Override
+            public Cursor loadInBackground() {
+                dbAccess = DataAccess.getInstance(OneSquad.this);
+
+
+                return c_squad;
+            }
+        };
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+    }
+
+
+    private static class TabsAdapter extends FragmentStatePagerAdapter{
+        String fraction;
+        String squadName;
 //        private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        TabsAdapter(FragmentManager fm) {
+        TabsAdapter(FragmentManager fm, String frac, String squad) {
             super(fm);
+            fraction = frac;
+            squadName = squad;
         }
 
         @Override
@@ -75,10 +109,10 @@ public class OneSquad extends AppCompatActivity {
         @Override
         public Fragment getItem(int i) {
             switch(i){
-                case 0: return FakePageFragment.newInstance();
-                case 1: return VideoFragment.newInstance();
-                default:return FakePageFragment.newInstance();
+                case 0: return DescriptionFragment.newInstance(fraction,squadName);
+                case 1: return new VideoFragment();
             }
+            return null;
         }
 
         @Override
@@ -86,16 +120,10 @@ public class OneSquad extends AppCompatActivity {
             switch(position){
                 case 0: return "Описание";
                 case 1: return "Video";
-                default:return "Video";
             }
+            return null;
         }
-
-//        public void addFragment(Fragment fragment, String title){
-//            mFragmentList.add(fragment);
-//            mFragmentTitleList.add(title);
-//
-//        }
-
-
     }
+
+
 }
