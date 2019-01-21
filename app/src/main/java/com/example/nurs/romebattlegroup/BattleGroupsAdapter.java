@@ -65,7 +65,7 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
     }
 
     public interface BattleGroupsAdapterOnClickHandler{
-        void onClickListener (String str);
+        void onClickListener (String str,String youTube, String description,String squadImage );
     }
 
     public BattleGroupsAdapter( BattleGroupsAdapterOnClickHandler handler, Context context, Cursor cursor, String type){
@@ -136,7 +136,16 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         @Override
         public void onClick(View view) {
             String squadName = tv_battle_group_name.getText().toString();
-            mClickHandler.onClickListener(squadName);
+            int position = mCursor.getPosition();
+            String youTube=null;
+            String description=null;
+            String squadImage=null;
+            if(mCursor.moveToPosition(position)){
+                youTube = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_YOUTUBEVIDEO));
+                description = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DESCRIPTION));
+                squadImage = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SQUAD_IMAGE));
+            }
+            mClickHandler.onClickListener(squadName, youTube, description,squadImage);
         }
     }
 

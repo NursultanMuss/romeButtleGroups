@@ -45,6 +45,7 @@ public final class MainFractionContract {
         public static final String COLUMN_BOEPRIPACY = "boepripasy";
         public static final String COLUMN_YOUTUBEVIDEO = "YouTubeVideo";
         public static final String COLUMN_DESCRIPTION = "description";
+        public static final String COLUMN_SQUAD_IMAGE = "imageSquad";
 
     }
     public static class FracOtryadEntry implements BaseColumns{

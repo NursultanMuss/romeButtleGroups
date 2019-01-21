@@ -188,10 +188,14 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
 
 
     @Override
-    public void onClickListener(String squad) {
+    public void onClickListener(String squad, String youTube, String description, String squadImage) {
         Intent intent = new Intent(this, OneSquad.class);
+        int position;
         intent.putExtra("Battle group name", squad);
         intent.putExtra(Intent.EXTRA_TEXT, frac);
+        intent.putExtra("YouTubeId",youTube);
+        intent.putExtra("Description",description);
+        intent.putExtra("squadImage",squadImage);
         startActivity(intent);
 
     }
