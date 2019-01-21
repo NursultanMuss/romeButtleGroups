@@ -43,6 +43,9 @@ public final class MainFractionContract {
         public static final String COLUMN_DALNOST = "dalnost";
         public static final String COLUMN_VISTREL_V_MIN = "vistrel_v_min";
         public static final String COLUMN_BOEPRIPACY = "boepripasy";
+        public static final String COLUMN_YOUTUBEVIDEO = "YouTubeVideo";
+        public static final String COLUMN_DESCRIPTION = "description";
+
     }
     public static class FracOtryadEntry implements BaseColumns{
         public static final String TABLE_NAME = "fraction_otryad";

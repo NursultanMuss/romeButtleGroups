@@ -121,12 +121,12 @@ public class DataAccess {
         open();
         SQLiteQueryBuilder qb= new SQLiteQueryBuilder();
         String sqlTables = "infanty";
-        String [] sqlSelect = {};
+        String [] sqlSelect = {"_id", "battle_group_name", "YouTubeVideo", "description"};
         String selection = "Fraction=? AND battle_group_name=?";
         String [] selectionArgs = new String[]{ fraction, squad};
         qb.setTables(sqlTables);
         Cursor c = qb.query(this.database, sqlSelect,selection,selectionArgs, null,null,null);
-
+        return c;
     }
     public Cursor getVozrastaniu(String fraction, String type_of_otryad){
         open();

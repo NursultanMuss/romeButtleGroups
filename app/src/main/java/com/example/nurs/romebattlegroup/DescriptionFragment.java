@@ -26,17 +26,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.nurs.romebattlegroup.data.DataAccess;
+import com.example.nurs.romebattlegroup.data.MainFractionContract;
 
 public class DescriptionFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
 	private DataAccess dbAccess;
 	Cursor cursor;
+	TextView desc;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View v = inflater.inflate(R.layout.list_item_card, container, false);
+		desc = v.findViewById(R.id.textViewDesc);
 		return v;
 	}
 
@@ -65,7 +69,7 @@ public class DescriptionFragment extends Fragment implements LoaderManager.Loade
 			@Override
 			public Cursor loadInBackground() {
 				dbAccess = DataAccess.getInstance(getContext());
-
+				dbAccess.getDescription(getArguments().getString("fraction"), getArguments().getString("squadName"));
 				return cursor;
 			}
 		};
@@ -73,7 +77,8 @@ public class DescriptionFragment extends Fragment implements LoaderManager.Loade
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-
+		cursor.moveToFirst();
+		desc.setText(cursor.getString(cursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DESCRIPTION)));
 	}
 
 	@Override
