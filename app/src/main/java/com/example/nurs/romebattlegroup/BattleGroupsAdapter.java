@@ -6,6 +6,7 @@ import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.DataSetObserver;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,9 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
     private boolean mDataValid;
     private Context mContext;
     private String mType;
+    String zn_youTubeVideo;
+    String description;
+    String squadImage;
 
     final private BattleGroupsAdapterOnClickHandler mClickHandler;
 //Замена и обновление курсора после выбора метода сортировки списка в тулбаре
@@ -65,7 +69,7 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
     }
 
     public interface BattleGroupsAdapterOnClickHandler{
-        void onClickListener (String str,String youTube, String description,String squadImage );
+        void onClickHandler(String squadName, String youtube, String description, String imgDesacription );
     }
 
     public BattleGroupsAdapter( BattleGroupsAdapterOnClickHandler handler, Context context, Cursor cursor, String type){
@@ -102,6 +106,11 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         TextView tv_dalnost;
         TextView tv_vys_v_min;
 
+        TextView tv_youTubeVideo;
+        TextView tv_imgDescription;
+        TextView tv_Description;
+
+
 
 
 
@@ -130,22 +139,20 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
             tv_uron_snaryada = view.findViewById(R.id.uron_snaryada);
             tv_dalnost = view.findViewById(R.id.dalnost);
             tv_vys_v_min = view.findViewById(R.id.vystrel_v_minutu);
+            tv_youTubeVideo = view.findViewById(R.id.youTubeVideo);
+            tv_imgDescription = view.findViewById(R.id.imgDescription);
+            tv_Description = view.findViewById(R.id.description);
             view.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             String squadName = tv_battle_group_name.getText().toString();
-            int position = mCursor.getPosition();
-            String youTube=null;
-            String description=null;
-            String squadImage=null;
-            if(mCursor.moveToPosition(position)){
-                youTube = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_YOUTUBEVIDEO));
-                description = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DESCRIPTION));
-                squadImage = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SQUAD_IMAGE));
-            }
-            mClickHandler.onClickListener(squadName, youTube, description,squadImage);
+            String youTube= tv_youTubeVideo.getText().toString();
+            String description=tv_Description.getText().toString();
+            String squadImage=tv_imgDescription.getText().toString();
+
+        mClickHandler.onClickHandler(squadName,youTube,description,squadImage);
         }
     }
 
@@ -176,6 +183,8 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         String zn_kolvo_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_KOLVO));
         String zn_tsena_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TSENA_NAIMA));
         String zn_tsena_soderzhaniya_1 = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_TSENA_SODERZHANIYA));
+
+
 
 
 
@@ -265,6 +274,20 @@ public class BattleGroupsAdapter extends RecyclerView.Adapter<BattleGroupsAdapte
         }else{
             holder.tv_vystrel_v_minutu_3.setVisibility(View.GONE);
             holder.tv_vys_v_min.setVisibility(View.GONE);}
+
+            if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_YOUTUBEVIDEO))!=null){
+                String zn_youTubeVideo = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_YOUTUBEVIDEO));
+                holder.tv_youTubeVideo.setText(zn_youTubeVideo);}
+            if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DESCRIPTION)) != null){
+            String description = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DESCRIPTION));
+                holder.tv_Description.setText(description);
+            }
+            if(mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SQUAD_IMAGE)) != null){
+            String squadImage = mCursor.getString(mCursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_SQUAD_IMAGE));
+                holder.tv_imgDescription.setText(squadImage);
+           }
+
+
 
 
     }
