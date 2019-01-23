@@ -21,15 +21,15 @@ public class VideoFragment extends Fragment {
     private static final String API_KEY = "AIzaSyAB_VtQ1nNManutODJYtMH6v6SVDOZhbaw";
     private static YouTubePlayer youTubePlayer;
     private static String TAG = "Tag";
+    private static  String youTubeVideo;
 
-    @Nullable
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         setRetainInstance(true);
         View v = inflater.inflate(R.layout.list_video_card,container,false);
-//        TextView textView =(TextView) v.findViewById(R.id.text_video);
-//        textView.setText("HAHASAAS");
-        YTPlayerFragment video= YTPlayerFragment.newInstance("cBaflW0uKNU");
+        youTubeVideo = getArguments().getString("youTube");
+        YTPlayerFragment video= YTPlayerFragment.newInstance(youTubeVideo);
         getChildFragmentManager().beginTransaction().replace(R.id.youtubeFragment,video).commit();
 //        youTubePlayerSupportFragment = (YouTubePlayerSupportFragment) getFragmentManager()
 //                .findFragmentById(R.id.youtubePlayerView);
@@ -56,12 +56,14 @@ public class VideoFragment extends Fragment {
         return v;
     }
 
-//    public static VideoFragment newInstance()
-//    {
-//         VideoFragment fragment = new VideoFragment();
-//
-//        return fragment;
-//    }
+    public static Fragment newInstance(String youTubeVideo)
+    {
+         VideoFragment fragment = new VideoFragment();
+         Bundle bundle = new Bundle();
+         bundle.putString("youTube", youTubeVideo);
+         fragment.setArguments(bundle);
+        return fragment;
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

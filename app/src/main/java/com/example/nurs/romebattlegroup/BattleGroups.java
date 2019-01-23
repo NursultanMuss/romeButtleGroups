@@ -158,13 +158,13 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
             public Cursor loadInBackground() {
                 dbAccess = DataAccess.getInstance(BattleGroups.this);
                 if(args == null) {
-                    c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
+                    c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac, BattleGroups.this.type_of_otryad, null);
                 }else if (args.getInt("selected_item_id") == 0){
-                    c_battleGroups = dbAccess.getKrutosti(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
+                    c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac, BattleGroups.this.type_of_otryad,"bliz_boi DESC");
                 }else if(args.getInt("selected_item_id") == 2){
-                    c_battleGroups = dbAccess.getUbivaniu(BattleGroups.this.frac,BattleGroups.this.type_of_otryad);
+                    c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac,BattleGroups.this.type_of_otryad, "tsena_naima DESC");
                 }else if(args.getInt("selected_item_id")==1){
-                    c_battleGroups = dbAccess.getVozrastaniu(BattleGroups.this.frac, BattleGroups.this.type_of_otryad);
+                    c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac, BattleGroups.this.type_of_otryad, "tsena_naima");
                 }
                 dbAccess.close();
                 return c_battleGroups;

@@ -99,12 +99,15 @@ public class DataAccess {
         return c;
     }
 
-    public Cursor getInfanty(String fraction, String type_of_otryad){
+    public Cursor getInfanty(String fraction, String type_of_otryad, String orderBy){
         open();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        String [] sqlSelect =new String[] {"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
-                "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
-                "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp", "ship_speed",  "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy"};
+        String [] sqlSelect = new String[] {"_id", "battle_group_name", "img","bliz_boi",
+                "uron_oruzhiem", "natisk", "zashita_bliz_boi", "bronia", "HP",
+                "Moral", "Fraction",
+                "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp",
+                "ship_speed", "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy",
+                "YouTubeVideo", "description", "imageSquad"};
         String sqlTables = "infanty";
         String selection = "Fraction=? AND type_of_group=?";
         String[] selectionArgs = new String[]{ fraction, type_of_otryad};
@@ -112,7 +115,7 @@ public class DataAccess {
         qb.setTables(sqlTables);
 
         Cursor c = qb.query(this.database, sqlSelect, selection, selectionArgs,
-                null, null,null);
+                null, null,orderBy);
 
         c.moveToFirst();
         return c;
@@ -121,64 +124,14 @@ public class DataAccess {
         open();
         SQLiteQueryBuilder qb= new SQLiteQueryBuilder();
         String sqlTables = "infanty";
-        String [] sqlSelect = {"_id", "battle_group_name", "YouTubeVideo", "description"};
+        String [] sqlSelect = {"_id", "battle_group_name", "YouTubeVideo", "description", "imageSquad"};
         String selection = "Fraction=? AND battle_group_name=?";
         String [] selectionArgs = new String[]{ fraction, squad};
         qb.setTables(sqlTables);
         Cursor c = qb.query(this.database, sqlSelect,selection,selectionArgs, null,null,null);
         return c;
     }
-    public Cursor getVozrastaniu(String fraction, String type_of_otryad){
-        open();
-        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        String [] sqlSelect =new String[] {"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
-                "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
-                "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp", "ship_speed",  "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy"};
-        String sqlTables = "infanty";
-        String orderBy= "tsena_naima";
-        String selection = "Fraction=? AND type_of_group=? ";
-        String[] selectionArgs = new String[]{fraction, type_of_otryad};
 
-        qb.setTables(sqlTables);
 
-        Cursor c = qb.query(this.database, sqlSelect, selection,selectionArgs,null,null,orderBy);
-        c.moveToFirst();
-        return c;
-    }
-
-    public Cursor getKrutosti(String fraction, String type_of_otryad){
-        open();
-        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        String [] sqlSelect = new String[] {"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
-                "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
-                "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp", "ship_speed",  "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy"};
-        String sqlTables = "infanty";
-        String orderBy= "bliz_boi DESC";
-        String selection = "Fraction=? AND type_of_group=?";
-        String[] selectionArgs = new String[]{fraction, type_of_otryad};
-
-        qb.setTables(sqlTables);
-
-        Cursor c = qb.query(this.database, sqlSelect, selection,selectionArgs,null,null,orderBy);
-        c.moveToFirst();
-        return c;
-    }
-    public Cursor getUbivaniu(String fraction, String type_of_otryad){
-        open();
-        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-        String [] sqlSelect =new String[] {"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
-                "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
-                "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp", "ship_speed",  "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy"};
-        String sqlTables = "infanty";
-        String orderBy= "tsena_naima DESC";
-        String selection = "Fraction=? AND type_of_group=?";
-        String[] selectionArgs = new String[]{fraction,type_of_otryad};
-
-        qb.setTables(sqlTables);
-
-        Cursor c = qb.query(this.database, sqlSelect, selection,selectionArgs,null,null,orderBy);
-        c.moveToFirst();
-        return c;
-    }
 
 }

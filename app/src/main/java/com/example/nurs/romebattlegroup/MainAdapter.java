@@ -23,6 +23,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
 
     private Cursor mCursor;
     private Context mContext;
+    String imageSrc;
     final private MainAdapterOnClickHandler mClickHandler;
 
     public interface MainAdapterOnClickHandler {
@@ -42,6 +43,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
         ImageView mImageView;
 
 
+
         public MainAdapterViewHolder(View view){
             super(view);
             mFractionTextView =  view.findViewById(R.id.fraction_tv);
@@ -56,6 +58,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
             String fractionsName = mFractionTextView.getText().toString();
             intent = new Intent(view.getContext(),BattleGroupTypes.class);
             intent.putExtra(Intent.EXTRA_TEXT,fractionsName);
+            intent.putExtra("fracImg", imageSrc);
             view.getContext().startActivity(intent);
 
         }
@@ -82,7 +85,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
 //        String img = String.valueOf(imgId);
         int imgId = mainAdapterViewHolder.mImageView.getResources().getIdentifier(imageViewText,"drawable","com.example.nurs.romebattlegroup");
 
-        String img = String.valueOf(imgId);
+        imageSrc = imageViewText;
         mainAdapterViewHolder.mFractionTextView.setText(thisFractionText);
         mainAdapterViewHolder.mImageView.setImageResource(imgId);
 

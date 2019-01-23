@@ -31,7 +31,7 @@ import android.widget.TextView;
 import com.example.nurs.romebattlegroup.data.DataAccess;
 import com.example.nurs.romebattlegroup.data.MainFractionContract;
 
-public class DescriptionFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>{
+public class DescriptionFragment extends Fragment{
 	private DataAccess dbAccess;
 	Cursor cursor;
 	TextView desc;
@@ -41,6 +41,7 @@ public class DescriptionFragment extends Fragment implements LoaderManager.Loade
 
 		View v = inflater.inflate(R.layout.list_item_card, container, false);
 		desc = v.findViewById(R.id.textViewDesc);
+		desc.setText(getArguments().getString("description"));
 		return v;
 	}
 
@@ -54,37 +55,15 @@ public class DescriptionFragment extends Fragment implements LoaderManager.Loade
 //		mRootView.setAdapter(new FakePageAdapter(20));
 //	}
 
-	public static Fragment newInstance(String frac, String squadName) {
+	public static Fragment newInstance( String description) {
 		DescriptionFragment desFragment= new DescriptionFragment();
 		Bundle bundle = new Bundle();
-		bundle.putString("fraction",frac);
-		bundle.putString("squadName", squadName);
+		bundle.putString("description",description);
 		desFragment.setArguments(bundle);
 		return desFragment;
 	}
 
-	@Override
-	public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-		return new CursorLoader(getContext()){
-			@Override
-			public Cursor loadInBackground() {
-				dbAccess = DataAccess.getInstance(getContext());
-				dbAccess.getDescription(getArguments().getString("fraction"), getArguments().getString("squadName"));
-				return cursor;
-			}
-		};
-	}
 
-	@Override
-	public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-		cursor.moveToFirst();
-		desc.setText(cursor.getString(cursor.getColumnIndex(MainFractionContract.InfantyEntry.COLUMN_DESCRIPTION)));
-	}
-
-	@Override
-	public void onLoaderReset(Loader<Cursor> loader) {
-
-	}
 
 
 //	private static class FakePageAdapter extends RecyclerView.Adapter<FakePageVH> {

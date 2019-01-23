@@ -24,7 +24,7 @@ import com.example.nurs.romebattlegroup.data.DataAccess;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OneSquad extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+public class OneSquad extends AppCompatActivity {
 
     Toolbar toolbar;
 //    TabLayout tabLayout;
@@ -78,46 +78,23 @@ public class OneSquad extends AppCompatActivity implements LoaderManager.LoaderC
         int imgId =imageView.getResources().getIdentifier(squadImage,"drawable", "com.example.nurs.romebattlegroup");
         imageView.setImageResource(imgId);
         tabLayout.setupWithViewPager(viewPager);
-        TabsAdapter adapter = new TabsAdapter(getSupportFragmentManager(),frac,squadName);
+        TabsAdapter adapter = new TabsAdapter(getSupportFragmentManager(),description,youTube);
         viewPager.setAdapter(adapter);
 
 
     }
 
-    @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        return new CursorLoader(this){
-            @Override
-            public Cursor loadInBackground() {
-                dbAccess = DataAccess.getInstance(OneSquad.this);
-
-
-                return c_squad;
-            }
-        };
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-
-    }
-
-    @Override
-    public void onLoaderReset(Loader<Cursor> loader) {
-
-    }
-
 
     private static class TabsAdapter extends FragmentStatePagerAdapter{
-        String fraction;
-        String squadName;
+        String description;
+        String youTube;
 //        private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        TabsAdapter(FragmentManager fm, String frac, String squad) {
+        TabsAdapter(FragmentManager fm, String desc, String youTubeVideo) {
             super(fm);
-            fraction = frac;
-            squadName = squad;
+            description = desc;
+            youTube = youTubeVideo;
         }
 
         @Override
@@ -128,8 +105,8 @@ public class OneSquad extends AppCompatActivity implements LoaderManager.LoaderC
         @Override
         public Fragment getItem(int i) {
             switch(i){
-                case 0: return DescriptionFragment.newInstance(fraction,squadName);
-                case 1: return new VideoFragment();
+                case 0: return DescriptionFragment.newInstance(description);
+                case 1: return VideoFragment.newInstance(youTube);
             }
             return null;
         }
