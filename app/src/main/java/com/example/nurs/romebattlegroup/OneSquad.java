@@ -51,6 +51,13 @@ public class OneSquad extends AppCompatActivity {
 
 
         toolbar = (Toolbar) findViewById(R.id.squad_toolbar);
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        }
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +85,7 @@ public class OneSquad extends AppCompatActivity {
         int imgId =imageView.getResources().getIdentifier(squadImage,"drawable", "com.example.nurs.romebattlegroup");
         imageView.setImageResource(imgId);
         tabLayout.setupWithViewPager(viewPager);
-        TabsAdapter adapter = new TabsAdapter(getSupportFragmentManager(),description,youTube);
+        TabsAdapter adapter = new TabsAdapter(getSupportFragmentManager(),description,youTube, squadName);
         viewPager.setAdapter(adapter);
 
 
@@ -88,25 +95,28 @@ public class OneSquad extends AppCompatActivity {
     private static class TabsAdapter extends FragmentStatePagerAdapter{
         String description;
         String youTube;
+        String squadName;
 //        private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        TabsAdapter(FragmentManager fm, String desc, String youTubeVideo) {
+        TabsAdapter(FragmentManager fm, String desc, String youTubeVideo, String name) {
             super(fm);
+            squadName = name;
             description = desc;
             youTube = youTubeVideo;
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
 
         @Override
         public Fragment getItem(int i) {
             switch(i){
                 case 0: return DescriptionFragment.newInstance(description);
-                case 1: return VideoFragment.newInstance(youTube);
+                case 1: return PropertiesFragment.newInstance(squadName);
+                case 2: return VideoFragment.newInstance(youTube);
             }
             return null;
         }
@@ -115,7 +125,8 @@ public class OneSquad extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch(position){
                 case 0: return "Описание";
-                case 1: return "Video";
+                case 1: return "Умения";
+                case 2: return "Video";
             }
             return null;
         }

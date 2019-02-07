@@ -16,4 +16,12 @@
     <string name="rom_armour_legionaries">Доспешные легионеры</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores expedita laudantium quaerat quia sit! Accusamus asperiores assumenda ipsam laudantium libero odio, quis ratione repellendus veniam voluptatibus? Error nulla quam velit.</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ability">Атакующая черепаха</string>
+    <string name="ability_type">Доспешные Легионеры</string>
+    <string name="ability_desc">Отряд поднимает щиты над головами в защитном боевом порядке.</string>
+    <string name="ability_adv">Защита от снарядов и стрел</string>
+    <string name="ability_weak">Скорость ограничена</string>
+
 </resources>

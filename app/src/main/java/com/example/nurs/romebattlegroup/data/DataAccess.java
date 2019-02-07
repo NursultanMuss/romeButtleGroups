@@ -45,33 +45,9 @@ public class DataAccess {
         }
     }
 
-//    String [] Vybor(String type_of_otryad){
-//        String [] vybor =null;
-//            if(type_of_otryad.equals("Пехота ближнего боя") || type_of_otryad.equals("Командование") || type_of_otryad.equals("Полководец") || type_of_otryad.equals("Пехота с копьями") ||
-//                    type_of_otryad.equals("Конница ближнего боя") || type_of_otryad.equals("Ударная конница") || type_of_otryad.equals("Слон") ||
-//                    type_of_otryad.equals("Особая боевая еденица")){
-//                 vybor = new String[] { "_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
-//                        "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
-//                        "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group"};}
-//                else if( type_of_otryad.equals( "Стрелки-пехотинцы")|| type_of_otryad.equals( "Стрелки-всадники")|| type_of_otryad.equals("Дальнобойная машина") ||
-//                    type_of_otryad.equals("Стационарная дальнобойная машина")) {
-//                vybor = new String[]{"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
-//                        "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
-//                        "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy"};}
-//                else if (type_of_otryad.equals("Флотоводец")|| type_of_otryad.equals( "Корабль ближнего боя")){
-//                vybor = new String[]{"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
-//                        "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
-//                        "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp", "ship_speed"};}
-//                else if (type_of_otryad.equals("Стрелковый корабль") || type_of_otryad.equals("Корабль с дальнобойными машинами")){
-//                vybor = new String[] {"_id", "battle_group_name", "img","bliz_boi", "uron_oruzhiem", "natisk",
-//                        "zashita_bliz_boi", "bronia", "HP", "Moral", "Fraction",
-//                        "kolvo", "tsena_naima", "tsena_soderzhaniya", "type_of_group", "ship_hp", "ship_speed",  "uron_snaryada", "dalnost", "vistrel_v_min", "boepripasy"};}
-//                return vybor;
-//            }
 
     public Cursor getFractions() {
 
-//        SQLiteDatabase db = getReadableDatabase();
         open();
         SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
 
@@ -120,13 +96,13 @@ public class DataAccess {
         c.moveToFirst();
         return c;
     }
-    public Cursor getDescription(String fraction, String squad){
+    public Cursor getAbilities( String squad){
         open();
         SQLiteQueryBuilder qb= new SQLiteQueryBuilder();
-        String sqlTables = "infanty";
-        String [] sqlSelect = {"_id", "battle_group_name", "YouTubeVideo", "description", "imageSquad"};
-        String selection = "Fraction=? AND battle_group_name=?";
-        String [] selectionArgs = new String[]{ fraction, squad};
+        String sqlTables = "squadAbilities";
+        String [] sqlSelect = {"_id", "battle_group_name", "type", "ability ", "description", "plus", "minus"};
+        String selection = "battle_group_name=?";
+        String [] selectionArgs = new String[]{  squad};
         qb.setTables(sqlTables);
         Cursor c = qb.query(this.database, sqlSelect,selection,selectionArgs, null,null,null);
         return c;

@@ -54,4 +54,13 @@ public final class MainFractionContract {
         public static final String COLUMN_OTRYADI = "otryadi";
 
     }
+    public static class SquadAbilitiesEntry implements BaseColumns{
+        public static final String TABLE_NAME = "squadAbilities";
+        public static final String COLUMN_BATTLE_GROUP_NAME = "battle_group_name";
+        public static final String COLUMN_TYPE = "type";
+        public static final String COLUMN_ABILITY = "ability";
+        public static final String COLUMN_DESCRIPTION = "description";
+        public static final String COLUMN_PLUS = "plus";
+        public static final String COLUMN_MINUS = "minus";
+    }
 }

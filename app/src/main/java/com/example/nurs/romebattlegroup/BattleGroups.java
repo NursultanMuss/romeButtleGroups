@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
@@ -46,6 +47,7 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
     String type_of_otryad;
     TextView kolvo_otr;
     TextView tv_title;
+    ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +101,9 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
             getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         }
+
+         pb = (ProgressBar) findViewById(R.id.progress_bar);
+        pb.setVisibility(View.VISIBLE);
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -167,6 +172,8 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
                     c_battleGroups = dbAccess.getInfanty(BattleGroups.this.frac, BattleGroups.this.type_of_otryad, "tsena_naima");
                 }
                 dbAccess.close();
+
+
                 return c_battleGroups;
             }
         };
@@ -178,6 +185,8 @@ public class BattleGroups extends AppCompatActivity implements LoaderManager.Loa
         mAdapter = new BattleGroupsAdapter(this,this,data, type_of_otryad);
         mRecyclerView.setAdapter(mAdapter);
         tv_title.setText(type_of_otryad + "(" +Integer.toString(mAdapter.getItemCount())+")");
+        pb.setVisibility(View.INVISIBLE);
+        mRecyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="40dp">
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ability_type"
+        android:textSize="20sp"
+        android:paddingTop="10sp"
+        android:paddingRight="10sp"
+        android:paddingBottom="10sp"
+        android:paddingLeft="10dp"
+        android:paddingEnd="10sp"
+        android:paddingStart="10dp" />
+    <TextView
+        android:id="@+id/ability"
+        android:textSize="20sp"
+        android:text="@string/ability"
+        android:paddingTop="25dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="15dp"
+        android:paddingLeft="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingEnd="15dp"
+        android:paddingStart="40dp" />
+    <TextView
+        android:id="@+id/ability_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ability_desc"
+        android:textSize="20sp"
+        android:paddingTop="5dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="40dp"
+        android:paddingEnd="30dp"
+        android:paddingStart="40dp" />
+
+    <TextView
+        android:id="@+id/ability_adv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="25dp"
+        android:paddingLeft="25dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:text="@string/ability_adv"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/ability_weak"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="25dp"
+        android:paddingLeft="25dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="5dp"
+        android:text="@string/ability_weak"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="20sp" />
+
+
+</LinearLayout>
