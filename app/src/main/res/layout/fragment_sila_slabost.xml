@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PropertiesFragment">
+    tools:context=".SilaSlabostFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ListView
-        android:id="@+id/lv_prop"
+        android:id="@+id/sila_slab_lv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 
 </FrameLayout>

@@ -107,6 +107,28 @@ public class DataAccess {
         Cursor c = qb.query(this.database, sqlSelect,selection,selectionArgs, null,null,null);
         return c;
     }
+    public Cursor getProperties(String squad){
+        open();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        String sqlTables = "squadProperties";
+        String[] sqlSelect = {"_id", "battle_group_name", "properties_name", "properties_description"};
+        String selection = "battle_group_name = ?";
+        String[] selectionArgs = new String[]{squad};
+        qb.setTables(sqlTables);
+        Cursor c = qb.query(this.database, sqlSelect,selection,selectionArgs, null,null,null);
+        return c;
+    }
+    public Cursor getSilaSlabosti(String squad){
+        open();
+        SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
+        String sqlTables = "sila_slabosti";
+        String[] sqlSelect = {"_id", "battle_group_name", "type", "properties"};
+        String selection = "battle_group_name = ?";
+        String[] selectionArgs = new String[]{squad};
+        qb.setTables(sqlTables);
+        Cursor c = qb.query(this.database, sqlSelect,selection,selectionArgs, null,null,null);
+        return c;
+    }
 
 
 

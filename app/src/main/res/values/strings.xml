@@ -23,5 +23,8 @@
     <string name="ability_desc">Отряд поднимает щиты над головами в защитном боевом порядке.</string>
     <string name="ability_adv">Защита от снарядов и стрел</string>
     <string name="ability_weak">Скорость ограничена</string>
+    <string name="prop_text">Этот отряд не теряет боевого духа, лишившись военачальника, а сбежав, чаще возвращается на поле боя.</string>
+    <string name="prop">Дисциплина</string>
+    <string name="silaSlabost">Грузовое судно</string>
 
 </resources>

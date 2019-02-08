@@ -63,4 +63,17 @@ public final class MainFractionContract {
         public static final String COLUMN_PLUS = "plus";
         public static final String COLUMN_MINUS = "minus";
     }
+
+    public static class SquadPropertiesEntry implements BaseColumns{
+        public static final String TABLE_NAME = "squadProperties";
+        public static final String COLUMN_BATTLE_GROUP_NAME = "battle_group_name";
+        public static final String COLUMN_PROPERTIES_NAME = "properties_name";
+        public static final String COLUMN_PROPERTIES_DESC = "properties_description";
+    }
+    public static class SilaSlabostEntry implements BaseColumns{
+        public static final String TABLE_NAME = "sila_slabosti";
+        public static final String COLUMN_BATTLE_GROUP_NAME = "battle_group_name";
+        public static final String COLUMN_TYPE = "type";
+        public static final String COLUMN_PROPERTIES = "properties";
+    }
 }

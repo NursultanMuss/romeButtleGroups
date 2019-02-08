@@ -34,4 +34,3 @@ dependencies {
     implementation 'me.grantland:autofittextview:0.2.+'
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
 }
-

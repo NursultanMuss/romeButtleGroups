@@ -6,11 +6,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -108,15 +104,17 @@ public class OneSquad extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            return 5;
         }
 
         @Override
         public Fragment getItem(int i) {
             switch(i){
                 case 0: return DescriptionFragment.newInstance(description);
-                case 1: return PropertiesFragment.newInstance(squadName);
-                case 2: return VideoFragment.newInstance(youTube);
+                case 1: return AbilitiesFragment.newInstance(squadName);
+                case 2: return PropertiesFragment.newInstance(squadName);
+                case 3: return SilaSlabostFragment.newInstance(squadName);
+                case 4: return VideoFragment.newInstance(youTube);
             }
             return null;
         }
@@ -126,7 +124,9 @@ public class OneSquad extends AppCompatActivity {
             switch(position){
                 case 0: return "Описание";
                 case 1: return "Умения";
-                case 2: return "Video";
+                case 2: return "Свойства";
+                case 3: return "Сила/Слабости";
+                case 4: return "Video";
             }
             return null;
         }
